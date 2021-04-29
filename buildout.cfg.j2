@@ -22,7 +22,7 @@ zeo-address = ${buildout:data-dir}/var/zeosocket
 # Zope client 1
 http-address = {{ item.value.zserver_address }}
 webdav-address = {{ item.value.webdav_address }}
-webdav-source-port = {{ item.value.webdav_source_port }}
+webdav-source-port = {{ item.value.webdav_address.split(":")[1] }}
 # Additional clients:
 debugger-address = {{ item.value.debugger_address }}
 
