@@ -16,7 +16,7 @@ def setupCookies(portal_setup):
     portal = portal_url.getPortalObject()
     l = portal.acl_users.session
     l.timeout = 604800
-    l.cookie_lifetime = 14
+    l.cookie_lifetime = 30
     l.secure = True
     logger("Cookie expiry time set.")
 
