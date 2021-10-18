@@ -14,7 +14,7 @@ module.exports = function (grunt) {
                     strictMath: false,
                     sourceMap: true,
                     outputSourceFiles: true,
-                    sourceMapFileInline: true,
+                    sourceMapFileInline: false,
                     sourceMapURL: '++theme++ruddocom/less/theme-compiled.less.map',
                     sourceMapFilename: 'less/theme-compiled.less.map',
                     modifyVars: {
@@ -26,34 +26,22 @@ module.exports = function (grunt) {
                 }
             }
         },
-        postcss: {
-            options: {
-                map: true,
-                processors: [
-                    require('autoprefixer')({
-                        browsers: ['last 2 versions']
-                    })
-                ]
-            },
-            dist: {
-                src: 'less/*.css'
-            }
-        },
         watch: {
             scripts: {
                 files: [
                     'less/*.less',
                     'barceloneta/less/*.less'
                 ],
-                tasks: ['less', 'postcss']
+                tasks: ['less', ]
             }
         },
         browserSync: {
             html: {
                 bsFiles: {
-                    src : [
-                      'less/*.less',
-                      'barceloneta/less/*.less'
+                    src: [
+                        'less/*.less',
+                        'barceloneta/less/*.less',
+                        '*.html'
                     ]
                 },
                 options: {
@@ -67,9 +55,11 @@ module.exports = function (grunt) {
             },
             plone: {
                 bsFiles: {
-                    src : [
-                      'less/*.less',
-                      'barceloneta/less/*.less'
+                    src: [
+                        'less/*.less',
+                        'barceloneta/less/*.less',
+                        '*.html',
+                        '*.xml'
                     ]
                 },
                 options: {
@@ -89,12 +79,11 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-browser-sync');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-less');
-    grunt.loadNpmTasks('grunt-postcss');
 
     // CWD to theme folder
     grunt.file.setBase('./src/ruddocom/theme/theme');
 
-    grunt.registerTask('compile', ['less', 'postcss']);
+    grunt.registerTask('compile', ['less', ]);
     grunt.registerTask('default', ['compile']);
     grunt.registerTask('bsync', ["browserSync:html", "watch"]);
     grunt.registerTask('plone-bsync', ["browserSync:plone", "watch"]);

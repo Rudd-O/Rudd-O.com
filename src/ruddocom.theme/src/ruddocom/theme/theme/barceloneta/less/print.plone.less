@@ -5,6 +5,17 @@
 
 @media print {
 
+
+  .sidebar-offcanvas,
+  #portal-footer-wrapper,
+  #mainnavigation-wrapper,
+  #content-header,
+  .link-https,
+  #edit-zone {
+    display:none;
+    visibility: hidden;
+  }
+
   * {
     text-shadow: none !important;
     color: #000 !important; // Black prints faster: h5bp.com/s
@@ -17,19 +28,17 @@
     text-decoration: underline;
   }
 
-  a[href]:after {
-    content: " [" attr(href) "]";
-    color: #666 !important;
+  a[href]::after {
+    content: " (" attr(href) ")";
   }
 
-  abbr[title]:after {
-    content: " [" attr(title) "]";
-    color: #666 !important;
+  abbr[title]::after {
+    content: " (" attr(title) ")";
   }
 
   // Don't show links for images, or javascript/internal links
-  a[href^="javascript:"]:after,
-  a[href^="#"]:after {
+  a[href^="javascript:"]::after,
+  a[href^="#"]::after {
     content: "";
   }
 
@@ -112,13 +121,4 @@
     display: None;
   }
 
-  /* Remove elements useless on printouts. */
-  #edit-zone, #mainnavigation-wrapper,
-  #abovecontent-wrapper, #content-header,
-  #viewlet-above-content-title, #viewlet-below-content,
-  .documentByLine, #viewlet-below-content-title,
-  #portal-footer-wrapper, footer,
-  #viewlet-below-content-body, #content-core .pagination {
-    display: None;
-  }
 }
