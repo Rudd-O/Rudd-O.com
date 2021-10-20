@@ -5198,18 +5198,6 @@ body.template-logged_out #content-core .portletFooter {
   margin-right: 0.5rem;
 }
 /* our custom styles */
-.custom-theme-marker {
-  display: none;
-  position: absolute;
-  top: 300px;
-  left: 30%;
-  margin: auto 0;
-  transform: rotate(-20deg);
-  background: #00ECFF;
-  color: #fff;
-  padding: 1em;
-  z-index: 100;
-}
 .section-front-page .custom-theme-marker {
   display: block;
 }
@@ -5239,5 +5227,87 @@ body.template-logged_out #content-core .portletFooter {
 .image-grid-2x2 > li img {
   max-width: 100%;
   max-height: 100%;
+}
+/* This style allows images / videos to scale 100% width / height. */
+.scaleimage,
+.autoscale,
+.portaltype-picture #content-core img {
+  width: 100%;
+  height: 100%;
+}
+/* By default, images inside article figures get the 100% treatment. */
+figure img {
+  width: 100%;
+  height: 100%;
+}
+/* Captions of article figures are centered and grey. */
+figure figcaption {
+  text-align: center;
+  color: #767676;
+}
+/* Hide "Image" label on portal type Picture, view template. */
+.template-view.portaltype-picture #content-core label {
+  display: none;
+}
+/* Hide "Categorization" fieldset on portal type Picture, view template. */
+.template-view.portaltype-picture #form-groups-categorization {
+  display: none;
+}
+/* Hide folder listing on portal type Picture, view template. */
+.template-view.portaltype-picture #folder-listing {
+  display: none;
+}
+/* Article asides. */
+#tinymce aside,
+main aside {
+  display: block;
+  margin-left: 1em;
+  margin-right: 1em;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #767676;
+}
+@media (min-width: 768px) {
+  #tinymce aside,
+  main aside {
+    margin-left: 3em;
+    margin-right: 3em;
+  }
+}
+/* Avoid pictures stacking up in listings. */
+.template-listing_view .entries .entry {
+  clear: right;
+}
+/* Icon for content type Picture defined in ruddocom.policy. */
+body#visual-portal-wrapper.pat-plone .outer-wrapper .contenttype-picture:before {
+  content: '\e810';
+}
+/* Divide the below content body viewlet between above and below. */
+#viewlet-below-content-body {
+  border-top: 1px solid #eeeeee;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+/* Override body content margin bottom. */
+body #content {
+  margin-bottom: 0px;
+}
+/* Make searchbox appear correctly in mobile. */
+@media not (min-width: 768px) {
+  #portal-anontools li {
+    margin: 12px 0 -12px 0;
+  }
+  #portal-searchbox {
+    position: absolute;
+    margin-top: 46px;
+  }
+}
+/* Hide author and time / date in collections. */
+.portaltype-collection .documentByLine {
+  display: none;
+}
+/* Hide title in front page. */
+.section-everything .documentFirstHeading {
+  display: None;
 }
 /*# sourceMappingURL=++theme++ruddocom/less/theme-compiled.less.map */
