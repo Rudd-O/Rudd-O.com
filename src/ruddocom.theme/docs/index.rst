@@ -1,5 +1,0 @@
-====================
-ruddocom.theme
-====================
-
-User documentation
