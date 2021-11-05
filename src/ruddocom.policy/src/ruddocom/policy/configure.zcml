@@ -19,7 +19,7 @@
 
   <genericsetup:registerProfile
       name="default"
-      title="ruddocom.policy"
+      title="Rudd-O.com policy"
       directory="profiles/default"
       description="Installs the ruddocom.policy add-on."
       provides="Products.GenericSetup.interfaces.EXTENSION"
@@ -28,7 +28,7 @@
 
   <genericsetup:registerProfile
       name="uninstall"
-      title="ruddocom.policy (uninstall)"
+      title="Rudd-O.com policy (uninstall)"
       directory="profiles/uninstall"
       description="Uninstalls the ruddocom.policy add-on."
       provides="Products.GenericSetup.interfaces.EXTENSION"
