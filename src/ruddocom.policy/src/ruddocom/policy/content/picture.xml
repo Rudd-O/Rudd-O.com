@@ -1,0 +1,14 @@
+<model
+    xmlns="http://namespaces.plone.org/supermodel/schema"
+    xmlns:security="http://namespaces.plone.org/supermodel/security"
+    xmlns:form="http://namespaces.plone.org/supermodel/form"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    xmlns:lingua="http://namespaces.plone.org/supermodel/lingua"
+    i18n:domain="ruddocom.policy">
+  <schema>
+    <field name="picture" type="plone.namedfile.field.NamedBlobImage" lingua:independent="true">
+      <description/>
+      <title>Image</title>
+    </field>
+  </schema>
+</model>
