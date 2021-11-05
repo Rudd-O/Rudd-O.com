@@ -1,0 +1,6 @@
+[report]
+include =
+    src/ruddocom/*
+omit =
+    */test*
+    */upgrades/*
