@@ -46,6 +46,16 @@
       profile="ruddocom.policy:default"
       />
 
+  <genericsetup:upgradeStep
+      title="Setup asset redirects"
+      description="Properties: redirects for language asset folders"
+      source="1002"
+      destination="1003"
+      handler=".setuphandlers.setup_language_folder_redirects"
+      sortkey="2"
+      profile="ruddocom.policy:default"
+      />
+
   <genericsetup:registerProfile
       name="uninstall"
       title="Rudd-O.com policy (uninstall)"

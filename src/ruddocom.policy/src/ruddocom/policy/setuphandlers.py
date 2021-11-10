@@ -4,7 +4,9 @@ import logging
 from plone import api
 from Products.CMFPlone.interfaces import INonInstallable
 from zope.interface import implementer
+from zope.component import getUtility
 from plone.app.multilingual.browser.setup import SetupMultilingualSite
+from plone.app.redirector.interfaces import IRedirectionStorage
 
 
 PROFILE = "ruddocom.policy:default"
@@ -37,3 +39,17 @@ def setup_multilingual(context=None):
     setuptool = SetupMultilingualSite()
     portal = api.portal.get()
     setuptool.setupSite(portal)
+
+
+def setup_language_folder_redirects(context=None):
+    portal = api.portal.get()
+    storage = getUtility(IRedirectionStorage)
+    for path, redirect in [
+        ("/en/assets", "/en/uploads"),
+        ("/es/recursos", "/es/uploads"),
+    ]:
+        obj = api.content.get(path)
+        phys_path = obj.absolute_url_path()
+        root = phys_path[:-len(path)]
+        phys_redirect = root + redirect
+        storage.add(phys_redirect, phys_path)
