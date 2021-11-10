@@ -10,5 +10,10 @@
       <description/>
       <title>Image</title>
     </field>
+    <field name="source" type="zope.schema.URI">
+      <description>The source for the image.</description>
+      <required>False</required>
+      <title>Source</title>
+    </field>
   </schema>
 </model>
