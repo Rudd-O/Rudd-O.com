@@ -56,6 +56,7 @@ setup(
         'plone.app.relationfield',
         'plone.app.lockingbehavior',
         'plone.schema',
+        'plone.app.multilingual',
     ],
     extras_require={
         'test': [
