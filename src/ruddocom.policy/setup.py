@@ -75,5 +75,6 @@ setup(
 
     [plone.recipe.zope2instance.ctl]
     createsite = ruddocom.policy.ctl:createsite
+    upgrade = ruddocom.policy.ctl:upgrade
     """,
 )
