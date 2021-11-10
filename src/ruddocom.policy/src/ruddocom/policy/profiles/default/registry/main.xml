@@ -3,6 +3,11 @@
     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
     i18n:domain="ruddocom.policy">
 
-<!-- -*- extra stuff goes here -*- -->
+  <record name="plone.use_cookie_negotiation" interface="plone.app.multilingual.interfaces.IMultiLanguageExtraOptionsSchema" field="use_cookie_negotiation">
+    <value>False</value>
+  </record>
+  <record name="plone.use_path_negotiation" interface="plone.app.multilingual.interfaces.IMultiLanguageExtraOptionsSchema" field="use_path_negotiation">
+    <value>True</value>
+  </record>
 
 </registry>
