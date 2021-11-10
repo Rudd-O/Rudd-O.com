@@ -72,5 +72,8 @@ setup(
     target = plone
     [console_scripts]
     update_locale = ruddocom.policy.locales.update:update_locale
+
+    [plone.recipe.zope2instance.ctl]
+    createsite = ruddocom.policy.ctl:createsite
     """,
 )
