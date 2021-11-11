@@ -38,15 +38,15 @@ def full_import(portal, from_path):
     import_content = api.content.get_view("import_content", portal, request)
     path = from_path / "content.json"
     import_content(jsonfile=path.read_text(), return_json=True)
+
+    import_relations = api.content.get_view("import_relations", portal, request)
+    path = from_path / "relations.json"
+    import_relations(jsonfile=path.read_text())
     return
 
     import_translations = api.content.get_view("import_translations", portal, request)
     path = from_path / "translations.json"
     import_translations(jsonfile=path.read_text())
-
-    import_relations = api.content.get_view("import_relations", portal, request)
-    path = from_path / "relations.json"
-    import_relations(jsonfile=path.read_text())
 
     import_members = api.content.get_view("import_members", portal, request)
     path = from_path / "members.json"
