@@ -26,7 +26,7 @@ def post_install(context):
     """Post install script"""
     setup_multilingual(context)
     setup_language_folder_redirects(context)
-
+    logger("Post-install of %s complete" % profile)
 
 def uninstall(context):
     """Uninstall script"""
