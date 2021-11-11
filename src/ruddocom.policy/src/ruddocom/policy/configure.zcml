@@ -29,30 +29,27 @@
   <genericsetup:upgradeStep
       title="Setup multilingual configuration"
       description="Setup site multilingual properties"
-      source="1000"
+      source="*"
       destination="1001"
       handler=".setuphandlers.setup_multilingual"
-      sortkey="1"
       profile="ruddocom.policy:default"
       />
 
   <genericsetup:upgradeDepends
       title="Setup language negotiation properties"
       description="Properties: language negotiation"
-      source="1001"
+      source="*"
       destination="1002"
       import_steps="plone.app.registry"
-      sortkey="2"
       profile="ruddocom.policy:default"
       />
 
   <genericsetup:upgradeStep
       title="Setup asset redirects"
       description="Properties: redirects for language asset folders"
-      source="1002"
+      source="*"
       destination="1003"
       handler=".setuphandlers.setup_language_folder_redirects"
-      sortkey="2"
       profile="ruddocom.policy:default"
       />
 
