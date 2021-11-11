@@ -42,6 +42,7 @@ for productid in productstoupgrade:
 
 if commit:
     t = transaction.get()
+    t.note("Products upgraded on %s: %s" % (siteid, ", ".join(productstoupgrade)))
     t.commit()
 for change in changes:
     print(change + (" (Simulated.)" if not commit else ""))

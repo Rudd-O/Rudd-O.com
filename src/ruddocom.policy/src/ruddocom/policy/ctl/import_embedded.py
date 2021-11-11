@@ -85,5 +85,5 @@ with externalEditorEnabled(app):
 
 if commit:
     t = transaction.get()
-    t.note("Import of content")
+    t.note("Import on %s completed" % siteid)
     t.commit()

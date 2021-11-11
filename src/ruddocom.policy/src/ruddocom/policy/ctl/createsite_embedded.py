@@ -33,4 +33,5 @@ addPloneSite(
 
 if commit:
     t = transaction.get()
+    t.note("Created Plone site %s" % site_id)
     t.commit()
