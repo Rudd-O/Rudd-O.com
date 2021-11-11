@@ -57,6 +57,8 @@ setup(
         'plone.app.lockingbehavior',
         'plone.schema',
         'plone.app.multilingual',
+        'collective.relationhelpers',
+        'collective.exportimport',
     ],
     extras_require={
         'test': [
@@ -77,5 +79,6 @@ setup(
     [plone.recipe.zope2instance.ctl]
     createsite = ruddocom.policy.ctl:createsite
     upgrade = ruddocom.policy.ctl:upgrade
+    import = ruddocom.policy.ctl:import_
     """,
 )
