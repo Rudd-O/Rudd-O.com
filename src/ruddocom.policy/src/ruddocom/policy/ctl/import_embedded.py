@@ -66,11 +66,6 @@ def full_import(portal, from_path):
 
 args = sys.argv[3:]
 
-commit = True
-if "-n" in args:
-    commit = False
-    args.remove("-n")
-
 if not args:
     raise Exception("the site to import should be the first argument")
 
@@ -81,10 +76,10 @@ site = app.unrestrictedTraverse(siteid)
 site = makerequest(site)
 setSite(site)
 
+t = transaction.begin()
+t.note("Import on %s completed" % siteid)
+
 with externalEditorEnabled(app):
     full_import(site, importpath)
 
-if commit:
-    t = transaction.get()
-    t.note("Import on %s completed" % siteid)
-    t.commit()
+t.commit()
