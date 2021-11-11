@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import contextlib
+import logging
 import os
 import sys
 from pathlib import Path
@@ -18,6 +19,12 @@ from AccessControl.SecurityManager import setSecurityPolicy
 from AccessControl.SecurityManagement import newSecurityManager
 
 
+
+logger = logging.getLogger(os.path.basename(__file__))
+logger.setLevel(logging.INFO)
+
+
+
 @contextlib.contextmanager
 def externalEditorEnabled(app):
     # Workaround to bypass the externalEditorEnabled demand
@@ -28,39 +35,23 @@ def externalEditorEnabled(app):
         delattr(app, "externalEditorEnabled")
 
 
-def full_import(portal, from_path):
+def full_import(portal, from_path, what=''):
     from_path = Path(from_path)
     request = aq_get(portal, "REQUEST")
 
     # Workaround to enable import view, otherwise it fails.
     request.form["form.submitted"] = True
 
-    import_content = api.content.get_view("import_content", portal, request)
-    path = from_path / "content.json"
-    import_content(jsonfile=path.read_text(), return_json=True)
+    for step in 'content relations translations members localroles defaultpages ordering discussions portlets'.split():
+        if what and step not in what:
+            continue
+        logger.info("Importing %s to site", step)
+        import_view = api.content.get_view("import_%s" % step, portal, request)
+        path = from_path / ("%s.json" % step)
+        import_view(jsonfile=path.read_text(), return_json=True)
 
-    import_relations = api.content.get_view("import_relations", portal, request)
-    path = from_path / "relations.json"
-    import_relations(jsonfile=path.read_text())
-    return
-
-    import_translations = api.content.get_view("import_translations", portal, request)
-    path = from_path / "translations.json"
-    import_translations(jsonfile=path.read_text())
-
-    import_members = api.content.get_view("import_members", portal, request)
-    path = from_path / "members.json"
-    import_members(jsonfile=path.read_text())
-
-    import_ordering = api.content.get_view("import_ordering", portal, request)
-    path = from_path / "ordering.json"
-    import_ordering(jsonfile=path.read_text())
-
-    import_defaultpages = api.content.get_view("import_defaultpages", portal, request)
-    path = from_path / "defaultpages.json"
-    import_defaultpages(jsonfile=path.read_text())
-
-    reset_modified = api.content.get_view("reset_modified_date", portal, request)
+    logger.info("Resetting dates on imported content")
+    reset_modified = api.content.get_view("reset_dates", portal, request)
     reset_modified()
 
 
@@ -71,15 +62,16 @@ if not args:
 
 siteid = args[0]
 importpath = args[1]
+what = " ".join(args[2:])
 
 site = app.unrestrictedTraverse(siteid)
 site = makerequest(site)
 setSite(site)
 
 t = transaction.begin()
-t.note("Import on %s completed" % siteid)
+t.note("Import of %s on %s completed" % (what, siteid))
 
 with externalEditorEnabled(app):
-    full_import(site, importpath)
+    full_import(site, importpath, what)
 
 t.commit()
