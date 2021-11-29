@@ -20,3 +20,7 @@ def upgrade(adjustedzope2cmd, unused_extra_cmdline_args):
 
 def import_(adjustedzope2cmd, unused_extra_cmdline_args):
     return _func("import", adjustedzope2cmd, unused_extra_cmdline_args)
+
+
+def export(adjustedzope2cmd, unused_extra_cmdline_args):
+    return _func("export", adjustedzope2cmd, unused_extra_cmdline_args)

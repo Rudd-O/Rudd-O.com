@@ -80,5 +80,6 @@ setup(
     createsite = ruddocom.policy.ctl:createsite
     upgrade = ruddocom.policy.ctl:upgrade
     import = ruddocom.policy.ctl:import_
+    export = ruddocom.policy.ctl:export
     """,
 )
