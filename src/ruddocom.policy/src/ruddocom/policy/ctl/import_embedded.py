@@ -3,21 +3,20 @@
 import contextlib
 import logging
 import os
-import sys
 from pathlib import Path
+import sys
 
-import transaction
-from zope.component.hooks import setSite
-from plone import api
+from AccessControl.SecurityManagement import newSecurityManager
+from AccessControl.SecurityManager import setSecurityPolicy
 from Acquisition import aq_get
-from Testing.makerequest import makerequest
 from Products.CMFCore.tests.base.security import (
     PermissiveSecurityPolicy,
     OmnipotentUser,
 )
-from AccessControl.SecurityManager import setSecurityPolicy
-from AccessControl.SecurityManagement import newSecurityManager
-
+from Testing.makerequest import makerequest
+from plone import api
+import transaction
+from zope.component.hooks import setSite
 
 
 logger = logging.getLogger(os.path.basename(__file__))
@@ -81,6 +80,20 @@ setSite(site)
 
 t = transaction.begin()
 t.note("Import of %s on %s completed" % (what, siteid))
+
+catalog = api.portal.get_tool('portal_catalog')
+results = catalog.searchResults(**{'portal_type': 'LRF'})
+
+deleted = False
+for r in results:
+    obj = r.getObject()
+    parent = obj.aq_parent
+    logger.info("Deleting %s from %s", obj.id, parent.id)
+    del parent[obj.id]
+    deleted = True
+if deleted:
+    logger.info("Recataloguing everything")
+    catalog.clearFindAndRebuild()
 
 with externalEditorEnabled(app):
     full_import(site, importpath, what)
