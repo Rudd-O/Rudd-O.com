@@ -58,7 +58,6 @@ def full_export(portal, from_path, outputpath, what=''):
     request.form["form.submitted"] = True
 
     for step in 'content relations translations members localroles defaultpages ordering discussion portlets'.split():
-        request.response.stdout = BytesIO()
         if what and step not in what:
             continue
         if step == "content":
@@ -70,11 +69,13 @@ def full_export(portal, from_path, outputpath, what=''):
             types = [x['value'] for x in portal_types(request)]
             export_view(portal_type=types, download_to_server=1, migration=True, path=from_path, include_blobs=2)
         else:
+            request.response.stdout = BytesIO()
+            request.response._wrote = 0
             export_view()
             request.response.stdout.seek(0, 0)
             reply = request.response.stdout.read()
             pos = reply.find(b"\r\n\r\n")
-            assert pos > 0
+            assert pos > 0, reply[:100]
             data = reply[pos+4:]
             with open(os.path.join(outputpath, "%s.json" % step), "wb") as f:
                 f.write(data)
