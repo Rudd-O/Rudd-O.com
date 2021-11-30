@@ -34,6 +34,22 @@ def externalEditorEnabled(app):
         delattr(app, "externalEditorEnabled")
 
 
+def remove_lrfs():
+    catalog = api.portal.get_tool('portal_catalog')
+    results = catalog.searchResults(**{'portal_type': 'LRF'})
+
+    deleted = False
+    for r in results:
+        obj = r.getObject()
+        parent = obj.aq_parent
+        logger.info("Deleting %s from %s", obj.id, parent.id)
+        del parent[obj.id]
+        deleted = True
+    if deleted:
+        logger.info("Recataloguing everything")
+        catalog.clearFindAndRebuild()
+
+
 def full_import(portal, from_path, what=''):
     from_path = Path(from_path)
     request = aq_get(portal, "REQUEST")
@@ -44,6 +60,10 @@ def full_import(portal, from_path, what=''):
     for step in 'content relations translations members localroles defaultpages ordering discussions portlets'.split():
         if what and step not in what:
             continue
+
+        if step == "content":
+            remove_lrfs()
+
         logger.info("Importing %s to site", step)
         import_view = api.content.get_view("import_%s" % step, portal, request)
         path = from_path / ("%s.json" % step)
@@ -80,20 +100,6 @@ setSite(site)
 
 t = transaction.begin()
 t.note("Import of %s on %s completed" % (what, siteid))
-
-catalog = api.portal.get_tool('portal_catalog')
-results = catalog.searchResults(**{'portal_type': 'LRF'})
-
-deleted = False
-for r in results:
-    obj = r.getObject()
-    parent = obj.aq_parent
-    logger.info("Deleting %s from %s", obj.id, parent.id)
-    del parent[obj.id]
-    deleted = True
-if deleted:
-    logger.info("Recataloguing everything")
-    catalog.clearFindAndRebuild()
 
 with externalEditorEnabled(app):
     full_import(site, importpath, what)
