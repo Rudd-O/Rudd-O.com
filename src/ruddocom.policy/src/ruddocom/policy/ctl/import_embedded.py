@@ -50,17 +50,20 @@ def full_import(portal, from_path, what=''):
         path = from_path / ("%s.json" % step)
         import_view(jsonfile=path.read_text(), return_json=True)
 
-    logger.info("Fixing HTML on imported content")
-    fixer = api.content.get_view("fix_html" % step, portal, request)
-    fixer()
+    if "fix_html" in what or not what:
+        logger.info("Fixing HTML on imported content")
+        fixer = api.content.get_view("fix_html" % step, portal, request)
+        fixer()
 
-    logger.info("Fixing collection queries")
-    fixer = api.content.get_view("fix_collection_queries" % step, portal, request)
-    fixer()
+    if "fix_collection_queries" in what or not what:
+        logger.info("Fixing collection queries")
+        fixer = api.content.get_view("fix_collection_queries" % step, portal, request)
+        fixer()
 
-    logger.info("Resetting dates on imported content")
-    fixer = api.content.get_view("reset_dates", portal, request)
-    fixer()
+    if "reset_dates" in what or not what:
+        logger.info("Resetting dates on imported content")
+        fixer = api.content.get_view("reset_dates", portal, request)
+        fixer()
 
 
 args = sys.argv[3:]
