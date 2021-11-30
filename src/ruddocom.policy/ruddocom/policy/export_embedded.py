@@ -69,12 +69,13 @@ def full_export(portal, from_path, outputpath, what=''):
             types = [x['value'] for x in portal_types(request)]
             export_view(portal_type=types, download_to_server=1, migration=True, path=from_path, include_blobs=2)
         else:
-            request.response.stdout.seek(0, 0)
-            request.response.stdout.truncate(0)
+            request.response.stdout = BytesIO()
+            request.response._wrote = 0
             export_view()
             request.response.stdout.seek(0, 0)
             reply = request.response.stdout.read()
             pos = reply.find(b"\r\n\r\n")
+            assert pos > 0, reply[:100]
             data = reply[pos+4:]
             with open(os.path.join(outputpath, "%s.json" % step), "wb") as f:
                 f.write(data)
