@@ -59,6 +59,7 @@ setup(
         'plone.app.multilingual',
         'collective.relationhelpers',
         'collective.exportimport',
+        'collective.folderishtypes[dexterity]',
     ],
     extras_require={
         'test': [

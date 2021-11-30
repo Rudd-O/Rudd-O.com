@@ -26,6 +26,7 @@ def post_install(context):
     """Post install script"""
     setup_multilingual(context)
     setup_language_folder_redirects(context)
+    setup_folderish_types(context)
     logger("Post-install complete")
 
 def uninstall(context):
@@ -56,3 +57,9 @@ def setup_language_folder_redirects(context=None):
         phys_redirect = root + redirect
         storage.add(phys_redirect, phys_path)
     logger("Done setting up language redirects")
+
+
+def setup_folderish_types(context=None):
+    setup_tool = api.portal.get_tool("portal_setup")
+    setup_tool.runAllImportStepsFromProfile('profile-collective.folderishtypes.dx:default')
+    logger("Done importing folderish types")

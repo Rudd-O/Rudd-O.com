@@ -53,6 +53,15 @@
       profile="ruddocom.policy:default"
       />
 
+  <genericsetup:upgradeStep
+      title="Setup folderish types"
+      description="Content: folderish types"
+      source="*"
+      destination="1004"
+      handler=".setuphandlers.setup_folderish_types"
+      profile="ruddocom.policy:default"
+      />
+
   <genericsetup:registerProfile
       name="uninstall"
       title="Rudd-O.com policy (uninstall)"
