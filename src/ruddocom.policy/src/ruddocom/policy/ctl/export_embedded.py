@@ -53,12 +53,12 @@ def full_export(portal, from_path, outputpath, what=''):
     if not from_path.startswith("/"):
         from_path = "/" + from_path
     request = aq_get(portal, "REQUEST")
-    request.response.stdout = BytesIO()
 
     # Workaround to enable import view, otherwise it fails.
     request.form["form.submitted"] = True
 
     for step in 'content relations translations members localroles defaultpages ordering discussion portlets'.split():
+        request.response.stdout = BytesIO()
         if what and step not in what:
             continue
         if step == "content":
