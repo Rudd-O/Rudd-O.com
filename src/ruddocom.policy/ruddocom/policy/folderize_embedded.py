@@ -15,10 +15,11 @@ portal = obj.portal_url.getPortalObject()
 setSite(portal)
 
 parent = obj.aq_parent
-folder = api.content.create(type='Folder', title=obj.title, container=parent)
+folder = api.content.create(type="Folder", title=obj.title, container=parent)
 obj = api.content.move(source=obj, target=folder, id="index")
 folder = api.content.rename(folder, obj_id)
 folder.setDefaultPage("index")
+api.content.transition(obj=folder, transition="publish")
 
 t = transaction.get()
 t.note("Folderized %s" % path)
