@@ -62,6 +62,15 @@
       profile="ruddocom.policy:default"
       />
 
+  <genericsetup:upgradeDepends
+      title="Enable sitemap"
+      description="Properties: sitemap"
+      source="*"
+      destination="1005"
+      import_steps="plone.app.registry"
+      profile="ruddocom.policy:default"
+      />
+
   <genericsetup:registerProfile
       name="uninstall"
       title="Rudd-O.com policy (uninstall)"
