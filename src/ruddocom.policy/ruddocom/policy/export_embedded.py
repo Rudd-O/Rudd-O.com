@@ -80,6 +80,19 @@ def full_export(portal, from_path, outputpath, what=''):
             with open(os.path.join(outputpath, "%s.json" % step), "wb") as f:
                 f.write(data)
 
+    del request.form["form.submitted"]
+
+    step = "redirects"
+    if not what or step in what:
+        # Workaround to enable CSV download.
+        request.form["form.button.Download"] = "Download+all+as+CSV"
+        logger.info("Exporting %s from site", step)
+        view = api.content.get_view("redirection-controlpanel", portal, request)
+        with view() as fobj:
+            data = fobj.read()
+            with open(os.path.join(outputpath, "%s.json" % step), "wb") as f:
+                f.write(data)
+
     logger.info("Done exporting site")
 
 args = sys.argv[3:]
