@@ -50,6 +50,18 @@ def remove_lrfs():
         catalog.clearFindAndRebuild()
 
 
+class fakeredirectsfile(object):
+    def __init__(self, fobject):
+        self.filename = fobject.name
+        self.data = fobject.readlines()
+        if self.data and self.data[0].strip().endswith("datetime,manual"):
+            self.data = self.data[1:]
+        self.data = "".join(self.data)
+
+    def read(self):
+        return self.data
+
+
 def full_import(portal, from_path, what=''):
     from_path = Path(from_path)
     request = aq_get(portal, "REQUEST")
@@ -68,6 +80,24 @@ def full_import(portal, from_path, what=''):
         import_view = api.content.get_view("import_%s" % step, portal, request)
         path = from_path / ("%s.json" % step)
         import_view(jsonfile=path.read_text(), return_json=True)
+
+    del request.form["form.submitted"]
+
+    step = "redirects"
+    if step in what or not what:
+        # Workaround to enable CSV download.
+        request.form["form.button.Upload"] = "Download+all+as+CSV"
+        path = from_path / ("%s.csv" % step)
+        with path.open("r") as fo:
+            f = fakeredirectsfile(fo)
+        request.form["file"] = f
+        logger.info("Importing %s to site", step)
+        view = api.content.get_view("redirection-controlpanel", portal, request)
+        view()
+    del request.form["form.button.Upload"]
+    del request.form["file"]
+
+    request.form["form.submitted"] = True
 
     if "fix_html" in what or not what:
         logger.info("Fixing HTML on imported content")
