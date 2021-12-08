@@ -44,5 +44,6 @@ setup(name='ruddocom.policy',
       [plone.recipe.zope2instance.ctl]
       upgrade = ruddocom.policy.upgrader:main
       export = ruddocom.policy:export
+      folderize = ruddocom.policy:folderize
       """,
       )
