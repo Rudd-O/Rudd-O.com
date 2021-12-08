@@ -90,7 +90,7 @@ def full_export(portal, from_path, outputpath, what=''):
         view = api.content.get_view("redirection-controlpanel", portal, request)
         with view() as fobj:
             data = fobj.read()
-            with open(os.path.join(outputpath, "%s.json" % step), "wb") as f:
+            with open(os.path.join(outputpath, "%s.csv" % step), "wb") as f:
                 f.write(data)
 
     logger.info("Done exporting site")
