@@ -8,7 +8,7 @@
       <element>statusmessages</element>
       <element>SearchableText</element>
     </value>
-    <value key="contentTypeRulesetMapping">{'File': 'plone.content.file', 'Image': 'plone.content.file', 'Collection': 'plone.content.folderView', 'Folder': 'plone.content.folderView', 'LIF': 'plone.content.folderView', 'LRF': 'plone.content.folderView', 'News Item': 'plone.content.folderView', 'Document': 'plone.content.folderView', 'Link': 'plone.content.itemView', 'picture': 'plone.content.itemView'}</value>
+    <value key="contentTypeRulesetMapping">{}</value>
     <value key="purgedContentTypes">
       <element>Collection</element>
       <element>File</element>
@@ -19,9 +19,9 @@
       <element>Link</element>
       <element>News Item</element>
       <element>Document</element>
-      <element>picture</element>
+      <element>Picture</element>
     </value>
-    <value key="templateRulesetMapping">{'rss.xml': 'plone.content.feed', 'atom.xml': 'plone.content.feed', 'itunes.xml': 'plone.content.feed', 'search_rss': 'plone.content.feed', 'RSS': 'plone.content.feed', 'accessibility-info': 'plone.content.itemView', 'image_view_fullscreen': 'plone.content.itemView', 'image_view': 'plone.content.itemView', 'file_view': 'plone.content.itemView', 'sitemap': 'plone.content.itemView'}</value>
+    <value key="templateRulesetMapping">{}</value>
   </records>
 
   <records interface="plone.cachepurging.interfaces.ICachePurgingSettings" prefix="plone.cachepurging.interfaces.ICachePurgingSettings">
@@ -29,11 +29,12 @@
       <element>http://localhost:80/purge-8732904bxedhstu/rudd-o.com</element>
       <element>http://localhost:80/purge-8732904bxedhstu/es.rudd-o.com</element>
     </value>
+    <value key="enabled">True</value>
   </records>
 
   <records interface="plone.caching.interfaces.ICacheSettings" prefix="plone.caching.interfaces.ICacheSettings">
     <value key="enabled">True</value>
-    <value key="operationMapping">{'plone.content.feed': 'plone.app.caching.moderateCaching', 'plone.content.file': 'plone.app.caching.moderateCaching', 'plone.content.folderView': 'plone.app.caching.moderateCaching', 'plone.content.itemView': 'plone.app.caching.moderateCaching', 'plone.resource': 'plone.app.caching.moderateCaching', 'plone.stableResource': 'plone.app.caching.strongCaching'}</value>
+    <value key="operationMapping">{'plone.content.feed': 'plone.app.caching.moderateCaching', 'plone.content.file': 'plone.app.caching.moderateCaching', 'plone.content.folderView': 'plone.app.caching.weakCaching', 'plone.content.itemView': 'plone.app.caching.weakCaching', 'plone.content.dynamic': 'plone.app.caching.terseCaching', 'plone.resource': 'plone.app.caching.strongCaching', 'plone.stableResource': 'plone.app.caching.strongCaching'}</value>
   </records>
 
 </registry>
