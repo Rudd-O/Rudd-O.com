@@ -15,7 +15,9 @@ from Products.CMFCore.tests.base.security import (
 )
 from Testing.makerequest import makerequest
 from plone import api
+from plone.app.redirector.interfaces import IRedirectionStorage
 import transaction
+from zope.component import getUtility
 from zope.component.hooks import setSite
 
 
@@ -62,6 +64,15 @@ class fakeredirectsfile(object):
         return self.data
 
 
+class StatusObject(object):
+
+    def __init__(self):
+        self.messages = []
+
+    def addStatusMessage(self, *a, **kw):
+        self.messages.append((a, kw))
+
+
 def full_import(portal, from_path, what=''):
     from_path = Path(from_path)
     request = aq_get(portal, "REQUEST")
@@ -93,7 +104,14 @@ def full_import(portal, from_path, what=''):
         request.form["file"] = f
         logger.info("Importing %s to site", step)
         view = api.content.get_view("redirection-controlpanel", portal, request)
-        view()
+        view.csv_errors = []
+        view.form_errors = {}
+        statusObject = StatusObject()
+        view.upload(f, portal, getUtility(IRedirectionStorage), statusObject)
+        if view.form_errors:
+            assert 0, view.form_errors
+        if view.csv_errors:
+            assert 0, "Errors during redirects import:\n\n" + "\n".join(str(s) for s in view.csv_errors)
     del request.form["form.button.Upload"]
     del request.form["file"]
 
