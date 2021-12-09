@@ -80,7 +80,7 @@ def full_import(portal, from_path, what=''):
     # Workaround to enable import view, otherwise it fails.
     request.form["form.submitted"] = True
 
-    for step in 'content translations relations members ordering defaultpages localroles discussion portlets'.split():
+    for step in 'content relations translations members localroles defaultpages ordering discussion portlets'.split():
         if what and step not in what:
             continue
 
