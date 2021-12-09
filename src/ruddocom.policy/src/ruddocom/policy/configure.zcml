@@ -80,6 +80,15 @@
       profile="ruddocom.policy:default"
       />
 
+  <genericsetup:upgradeDepends
+      title="Govern frontend cache"
+      description="Properties: cache settings"
+      source="*"
+      destination="1007"
+      import_steps="plone.app.registry"
+      profile="ruddocom.policy:default"
+      />
+
   <genericsetup:registerProfile
       name="uninstall"
       title="Rudd-O.com policy (uninstall)"

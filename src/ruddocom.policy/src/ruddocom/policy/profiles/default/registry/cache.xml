@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<registry
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="ruddocom.policy">
+
+  <records interface="plone.app.caching.interfaces.IPloneCacheSettings" prefix="plone.app.caching.interfaces.IPloneCacheSettings">
+    <value key="cacheStopRequestVariables">
+      <element>statusmessages</element>
+      <element>SearchableText</element>
+    </value>
+    <value key="contentTypeRulesetMapping">{'File': 'plone.content.file', 'Image': 'plone.content.file', 'Collection': 'plone.content.folderView', 'Folder': 'plone.content.folderView', 'LIF': 'plone.content.folderView', 'LRF': 'plone.content.folderView', 'News Item': 'plone.content.folderView', 'Document': 'plone.content.folderView', 'Link': 'plone.content.itemView', 'picture': 'plone.content.itemView'}</value>
+    <value key="purgedContentTypes">
+      <element>Collection</element>
+      <element>File</element>
+      <element>Folder</element>
+      <element>Image</element>
+      <element>LIF</element>
+      <element>LRF</element>
+      <element>Link</element>
+      <element>News Item</element>
+      <element>Document</element>
+      <element>picture</element>
+    </value>
+    <value key="templateRulesetMapping">{'rss.xml': 'plone.content.feed', 'atom.xml': 'plone.content.feed', 'itunes.xml': 'plone.content.feed', 'search_rss': 'plone.content.feed', 'RSS': 'plone.content.feed', 'accessibility-info': 'plone.content.itemView', 'image_view_fullscreen': 'plone.content.itemView', 'image_view': 'plone.content.itemView', 'file_view': 'plone.content.itemView', 'sitemap': 'plone.content.itemView'}</value>
+  </records>
+
+  <records interface="plone.cachepurging.interfaces.ICachePurgingSettings" prefix="plone.cachepurging.interfaces.ICachePurgingSettings">
+    <value key="cachingProxies">
+      <element>http://localhost:80/purge-8732904bxedhstu/rudd-o.com</element>
+      <element>http://localhost:80/purge-8732904bxedhstu/es.rudd-o.com</element>
+    </value>
+  </records>
+
+  <records interface="plone.caching.interfaces.ICacheSettings" prefix="plone.caching.interfaces.ICacheSettings">
+    <value key="enabled">True</value>
+    <value key="operationMapping">{'plone.content.feed': 'plone.app.caching.moderateCaching', 'plone.content.file': 'plone.app.caching.moderateCaching', 'plone.content.folderView': 'plone.app.caching.moderateCaching', 'plone.content.itemView': 'plone.app.caching.moderateCaching', 'plone.resource': 'plone.app.caching.moderateCaching', 'plone.stableResource': 'plone.app.caching.strongCaching'}</value>
+  </records>
+
+</registry>
