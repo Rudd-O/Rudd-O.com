@@ -1,0 +1,18 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<registry>
+  <records interface="Products.CMFPlone.interfaces.controlpanel.IMarkupSchema" prefix="plone">
+    <value key="allowed_types">
+      <element>text/html</element>
+      <element>text/plain</element>
+      <element>text/plain-pre</element>
+      <element>text/x-python</element>
+      <element>text/x-web-markdown</element>
+      <element>text/x-web-textile</element>
+    </value>
+    <value key="default_type">text/html</value>
+    <value key="markdown_extensions">
+      <element>markdown.extensions.fenced_code</element>
+      <element>markdown.extensions.nl2br</element>
+    </value>
+  </records>
+</registry>

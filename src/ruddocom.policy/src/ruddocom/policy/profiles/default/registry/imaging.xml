@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<registry>
+  <records interface="Products.CMFPlone.interfaces.controlpanel.IImagingSchema" prefix="plone">
+    <value key="allowed_sizes">
+      <element>large 768:768</element>
+      <element>preview 400:400</element>
+      <element>mini 200:200</element>
+      <element>thumb 128:128</element>
+      <element>tile 64:64</element>
+      <element>icon 32:32</element>
+      <element>listing 16:16</element>
+    </value>
+    <value key="highpixeldensity_scales">2x</value>
+    <value key="image_captioning">True</value>
+    <value key="quality">88</value>
+    <value key="quality_2x">62</value>
+    <value key="quality_3x">51</value>
+  </records>
+</registry>

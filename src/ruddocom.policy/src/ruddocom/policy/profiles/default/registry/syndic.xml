@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<registry>
+  <records interface="Products.CMFPlone.interfaces.syndication.ISiteSyndicationSettings" prefix="Products.CMFPlone.interfaces.syndication.ISiteSyndicationSettings">
+    <value key="allowed">True</value>
+    <value key="allowed_feed_types">
+      <element>RSS|RSS 1.0</element>
+      <element>rss.xml|RSS 2.0</element>
+      <element>atom.xml|Atom</element>
+      <element>itunes.xml|iTunes</element>
+    </value>
+    <value key="default_enabled">True</value>
+    <value key="max_items">20</value>
+    <value key="render_body">True</value>
+    <value key="search_rss_enabled">True</value>
+    <value key="show_author_info">True</value>
+    <value key="show_syndication_button">True</value>
+    <value key="show_syndication_link">False</value>
+  </records>
+</registry>

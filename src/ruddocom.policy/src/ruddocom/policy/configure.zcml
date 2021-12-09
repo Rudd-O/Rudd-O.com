@@ -89,6 +89,15 @@
       profile="ruddocom.policy:default"
       />
 
+  <genericsetup:upgradeDepends
+      title="Govern syndication and other settings"
+      description="Properties: syndication and more"
+      source="*"
+      destination="1008"
+      import_steps="plone.app.registry"
+      profile="ruddocom.policy:default"
+      />
+
   <genericsetup:registerProfile
       name="uninstall"
       title="Rudd-O.com policy (uninstall)"

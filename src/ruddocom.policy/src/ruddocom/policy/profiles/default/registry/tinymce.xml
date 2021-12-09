@@ -1,0 +1,176 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<registry>
+  <records interface="Products.CMFPlone.interfaces.controlpanel.ITinyMCEResourceTypesSchema" prefix="plone">
+    <value key="contains_objects">
+      <element>Folder</element>
+      <element>Large Plone Folder</element>
+      <element>Plone Site</element>
+      <element>LIF</element>
+      <element>News Item</element>
+      <element>Document</element>
+    </value>
+    <value key="entity_encoding">raw</value>
+    <value key="image_objects">
+      <element>Image</element>
+    </value>
+  </records>
+  <records interface="Products.CMFPlone.interfaces.controlpanel.ITinyMCESchema" prefix="plone">
+    <value key="alignment_styles">
+      <element>Left|alignleft|alignleft</element>
+      <element>Center|aligncenter|aligncenter</element>
+      <element>Right|alignright|alignright</element>
+      <element>Justify|alignjustify|alignjustify</element>
+      <element>Full-width image|autoscaleimg|alignjustify</element>
+      <element>Full-width video|autoscalevid|alignjustify</element>
+    </value>
+    <value key="autoresize">False</value>
+    <value key="block_styles">
+      <element>Paragraph|p</element>
+      <element>Blockquote|blockquote</element>
+      <element>Div|div</element>
+      <element>Pre|pre</element>
+      <element>Figure|figure</element>
+      <element>Figure caption|figcaption</element>
+      <element>Aside|aside</element>
+    </value>
+    <value key="content_css">
+      <element>++plone++static/components/tinymce-builded/js/tinymce/skins/lightgray/content.min.css</element>
+    </value>
+    <value key="custom_buttons"/>
+    <value key="custom_plugins">
+      <element>template|+plone+static/components/tinymce-builded/js/tinymce/plugins/template</element>
+    </value>
+    <value key="formats">{&#13;
+    "figure": {&#13;
+        "block": "figure"&#13;
+    },&#13;
+    "figcaption": {&#13;
+        "block": "figcaption"&#13;
+    },&#13;
+    "aside": {&#13;
+        "block": "aside"&#13;
+    },&#13;
+    "autoscaleimg": {&#13;
+        "classes": "autoscale",&#13;
+        "inline": "img",&#13;
+        "block": "img"&#13;
+    },&#13;
+    "autoscalevid": {&#13;
+        "classes": "autoscale",&#13;
+        "inline": "video",&#13;
+        "block": "video"&#13;
+    },&#13;
+    "quote": {&#13;
+        "inline": "q"&#13;
+    },&#13;
+    "discreet": {&#13;
+        "inline": "span",&#13;
+        "classes": "discreet"&#13;
+    },&#13;
+    "clearfix": {&#13;
+        "block": "div",&#13;
+        "classes": "clearfix"&#13;
+    }&#13;
+}</value>
+    <value key="header_styles">
+      <element>Header 1|h1</element>
+      <element>Header 2|h2</element>
+      <element>Header 3|h3</element>
+      <element>Header 4|h4</element>
+      <element>Header 5|h5</element>
+      <element>Header 6|h6</element>
+    </value>
+    <value key="inline_styles">
+      <element>Bold|bold|bold</element>
+      <element>Italic|italic|italic</element>
+      <element>Underline|underline|underline</element>
+      <element>Strikethrough|strikethrough|strikethrough</element>
+      <element>Superscript|superscript|superscript</element>
+      <element>Subscript|subscript|subscript</element>
+      <element>Code|code|code</element>
+      <element>Quote|quote|quote</element>
+    </value>
+    <value key="libraries_atd_ignore_strings">
+      <element>Zope</element>
+      <element>Plone</element>
+      <element>TinyMCE</element>
+    </value>
+    <value key="libraries_atd_service_url">service.afterthedeadline.com</value>
+    <value key="libraries_atd_show_types">
+      <element>Bias Language</element>
+      <element>Cliches</element>
+      <element>Complex Expression</element>
+      <element>Diacritical Marks</element>
+      <element>Double Negatives</element>
+      <element>Hidden Verbs</element>
+      <element>Jargon Language</element>
+      <element>Passive voice</element>
+      <element>Phrases to Avoid</element>
+      <element>Redundant Expression</element>
+    </value>
+    <value key="libraries_spellchecker_choice">browser</value>
+    <value key="menu">{&#13;
+    "edit": {&#13;
+        "title": "Edit",&#13;
+        "items": "undo redo | cut copy paste pastetext | searchreplace textpattern selectall | textcolor"&#13;
+    },&#13;
+    "insert": {&#13;
+        "title": "Insert",&#13;
+        "items": "link media | template hr"&#13;
+    },&#13;
+    "view": {&#13;
+        "title": "View",&#13;
+        "items": "visualaid visualchars visualblocks preview fullpage fullscreen"&#13;
+    },&#13;
+    "format": {&#13;
+        "title": "Format",&#13;
+        "items": "bold italic underline strikethrough superscript subscript | formats | removeformat"&#13;
+    },&#13;
+    "table": {&#13;
+        "title": "Table",&#13;
+        "items": "inserttable tableprops deletetable | cell row column"&#13;
+    },&#13;
+    "tools": {&#13;
+        "title": "Tools",&#13;
+        "items": "spellchecker charmap emoticons insertdatetime layer code"&#13;
+    }&#13;
+}</value>
+    <value key="menubar">
+      <element>edit</element>
+      <element>table</element>
+      <element>format</element>
+      <element>toolsview</element>
+      <element>insert</element>
+    </value>
+    <value key="other_settings">{}</value>
+    <value key="plugins">
+      <element>advlist</element>
+      <element>code</element>
+      <element>fullscreen</element>
+      <element>hr</element>
+      <element>lists</element>
+      <element>media</element>
+      <element>nonbreaking</element>
+      <element>noneditable</element>
+      <element>pagebreak</element>
+      <element>paste</element>
+      <element>preview</element>
+      <element>print</element>
+      <element>searchreplace</element>
+      <element>tabfocus</element>
+      <element>table</element>
+      <element>visualchars</element>
+      <element>wordcount</element>
+    </value>
+    <value key="resizing">True</value>
+    <value key="table_styles">
+      <element>Listing|listing</element>
+      <element>Invisible Grid|invisible-grid</element>
+    </value>
+    <value key="templates">[&#13;
+    {"title": "Image with caption", "url": "++theme++ruddocom/tinymce-templates/image-with-caption.html"},&#13;
+    {"title": "Image Grid 2x2", "url": "++theme++ruddocom/tinymce-templates/image-grid-2x2.html"}&#13;
+]</value>
+    <value key="toolbar">ltr rtl | undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | unlink plonelink ploneimage</value>
+  </records>
+</registry>
