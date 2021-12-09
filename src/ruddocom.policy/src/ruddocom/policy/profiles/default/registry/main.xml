@@ -10,11 +10,21 @@
     <value>True</value>
   </record>
 
-  <record name="plone.enable_sitemap" interface="Products.CMFPlone.interfaces.controlpanel.ISiteSchema" field="enable_sitemap">
-    <value>True</value>
-  </record>
-  <record name="plone.exposeDCMetaTags" interface="Products.CMFPlone.interfaces.controlpanel.ISiteSchema" field="exposeDCMetaTags">
-    <value>True</value>
-  </record>
+  <records interface="Products.CMFPlone.interfaces.controlpanel.ISiteSchema" prefix="plone">
+    <value key="display_publication_date_in_byline">True</value>
+    <value key="enable_sitemap">True</value>
+    <value key="exposeDCMetaTags">True</value>
+    <value key="webstats_js">&lt;!-- Global site tag (gtag.js) - Google Analytics --&gt;&#13;
+&lt;!-- disabled&#13;
+&lt;script async src="https://www.googletagmanager.com/gtag/js?id=UA-1203268-1"&gt;&lt;/script&gt;&#13;
+&lt;script&gt;&#13;
+  window.dataLayer = window.dataLayer || [];&#13;
+  function gtag(){dataLayer.push(arguments);}&#13;
+  gtag('js', new Date());&#13;
+&#13;
+  gtag('config', 'UA-1203268-1');&#13;
+&lt;/script&gt;&#13;
+--&gt;</value>
+  </records>
 
 </registry>
