@@ -8,10 +8,10 @@
   <schema>
     <field name="picture" type="plone.namedfile.field.NamedBlobImage" lingua:independent="true">
       <description/>
-      <title>Image</title>
+      <title>Picture</title>
     </field>
     <field name="source" type="zope.schema.URI">
-      <description>The source for the image.</description>
+      <description>The source for the picture.</description>
       <required>False</required>
       <title>Source</title>
     </field>
