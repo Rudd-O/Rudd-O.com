@@ -107,6 +107,15 @@
       profile="ruddocom.policy:default"
       />
 
+  <genericsetup:upgradeDepends
+      title="Remove default portlets"
+      description="Portlets: remove default"
+      source="*"
+      destination="1010"
+      import_steps="portlets"
+      profile="ruddocom.policy:default"
+      />
+
   <genericsetup:registerProfile
       name="uninstall"
       title="Rudd-O.com policy (uninstall)"
