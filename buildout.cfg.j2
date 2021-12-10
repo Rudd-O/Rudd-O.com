@@ -10,13 +10,10 @@ data-dir = ${buildout:data-basedir}/{{ item.key }}
 
 extends = 
     base.cfg
-    https://dist.plone.org/release/6.0.0a1/versions.cfg
     versions.cfg
 
 # If you change your Plone version, you'll also need to update
 # the repository below.
-find-links +=
-    https://dist.plone.org/release/6.0.0a1/
 
 zeo-address = ${buildout:data-dir}/var/zeosocket
 # Zope client 1
