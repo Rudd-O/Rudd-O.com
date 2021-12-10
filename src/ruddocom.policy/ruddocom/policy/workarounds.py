@@ -48,18 +48,6 @@ except ImportError:
 
 
 try:
-    from Products.PloneFormGen.content.form import FormFolder
-except ImportError:
-
-    class FormFolder(Interface):
-        """IUndoSupport interface"""
-
-        pass
-
-    alias_module("Products.PloneFormGen.content.form.FormFolder", FormFolder)
-    LOGGER.warn("Alias registered for missing: Products.PloneFormGen.content.form.FormFolder")
-
-try:
     from archetypes.multilingual.interfaces import IArchetypesTranslatable
 except ImportError:
 
