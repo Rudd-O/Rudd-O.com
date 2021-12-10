@@ -18,4 +18,11 @@
       directory="static"
       />
 
+  <browser:page
+      name="view"
+      for="ruddocom.policy.content.picture.IPicture"
+      permission="zope2.View"
+      template="templates/picture.pt"
+      />
+
 </configure>

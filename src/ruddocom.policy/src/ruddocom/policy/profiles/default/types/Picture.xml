@@ -22,9 +22,9 @@
   <!-- Schema, class and security -->
   <property name="add_permission">ruddocom.policy.AddPicture</property>
   <property name="klass">plone.dexterity.content.Item</property>
-  <property name="model_file">ruddocom.policy.content:picture.xml</property>
+  <property name="model_file"></property>
   <property name="model_source"></property>
-  <property name="schema"></property>
+  <property name="schema">ruddocom.policy.content.picture.IPicture</property>
 
   <!-- Enabled behaviors -->
   <property name="behaviors" purge="false">
