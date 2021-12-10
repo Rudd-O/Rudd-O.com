@@ -10,7 +10,7 @@
 <metal:content-core fill-slot="content-core">
 <metal:content-core define-macro="content-core"
              tal:define="content_type python: context.picture.contentType;
-                         filename python: context.picture.filename;
+                         source python: context.source;
                          url python: '{}/@@display-file/picture/{}'.format(context.absolute_url(), context.picture.filename)
                                                      ">
 
@@ -20,6 +20,8 @@
       </a>
 
     </figure>
+
+    <p tal:condition="source" class="discreet" style="text-align: center"><a tal:attributes="href python:source">Source for this picture</a></p>.
 
 </metal:content-core>
 </metal:content-core>
