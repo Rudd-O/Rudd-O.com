@@ -98,6 +98,15 @@
       profile="ruddocom.policy:default"
       />
 
+  <genericsetup:upgradeDepends
+      title="Allow per-collection syndication"
+      description="Actions: syndication button"
+      source="*"
+      destination="1009"
+      import_steps="actions"
+      profile="ruddocom.policy:default"
+      />
+
   <genericsetup:registerProfile
       name="uninstall"
       title="Rudd-O.com policy (uninstall)"
