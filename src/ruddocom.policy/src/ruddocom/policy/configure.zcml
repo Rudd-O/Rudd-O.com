@@ -116,6 +116,15 @@
       profile="ruddocom.policy:default"
       />
 
+  <genericsetup:upgradeStep
+      title="Hide the colophon"
+      description="Portlets: hide colophon"
+      source="*"
+      destination="1011"
+      handler=".setuphandlers.hide_colophon"
+      profile="ruddocom.policy:default"
+      />
+
   <genericsetup:registerProfile
       name="uninstall"
       title="Rudd-O.com policy (uninstall)"
