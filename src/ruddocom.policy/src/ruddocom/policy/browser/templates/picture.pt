@@ -14,12 +14,13 @@
                          url python: '{}/@@display-file/picture/{}'.format(context.absolute_url(), context.picture.filename)
                                                      ">
 
-    <figure class="figure">
-      <a tal:attributes="href python:url">
-        <img tal:attributes="src python:url" class="figure-img img-fluid"/>
-      </a>
-
-    </figure>
+    <div style="text-align: center">
+      <figure class="figure" style="text-align: center">
+        <a tal:attributes="href python:url">
+          <img tal:attributes="src python:url" class="figure-img img-fluid"/>
+        </a>
+      </figure>
+    </div>
 
     <p tal:condition="source" class="discreet" style="text-align: center"><a tal:attributes="href python:source">Source for this picture</a>.</p>
 
