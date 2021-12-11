@@ -4,9 +4,9 @@
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       lang="en"
       tal:omit-tag=""
-      tal:define="portal_url python:context.restrictedTraverse('@@plone_portal_state').portal_url();
-                  rss python:portal_url + '/everything/RSS';
-                  atom python:portal_url + '/everything/atom.xml';
+      tal:define="root python:context.restrictedTraverse('@@plone_portal_state').navigation_root().absolute_url();
+                  rss python:root + '/everything/RSS';
+                  atom python:root + '/everything/atom.xml';
                   telegram string:https://t.me/RuddO_com;"
       i18n:domain="plone">
 
