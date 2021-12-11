@@ -21,7 +21,7 @@
 
     </figure>
 
-    <p tal:condition="source" class="discreet" style="text-align: center"><a tal:attributes="href python:source">Source for this picture</a></p>.
+    <p tal:condition="source" class="discreet" style="text-align: center"><a tal:attributes="href python:source">Source for this picture</a>.</p>
 
 </metal:content-core>
 </metal:content-core>
