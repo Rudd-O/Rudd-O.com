@@ -1,0 +1,26 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      tal:omit-tag=""
+      tal:define="portal_url python:context.restrictedTraverse('@@plone_portal_state').portal_url();
+                  rss python:portal_url + '/everything/RSS';
+                  atom python:portal_url + '/everything/atom.xml';
+                  telegram string:https://t.me/RuddO_com;"
+      i18n:domain="plone">
+
+  <div class="card card-classic" id="portal-footer-signature" metal:define-macro="portlet">
+
+    <div class="card-body">
+        <span tal:condition="python:context.restrictedTraverse('@@plone_portal_state').language().startswith('es')"
+           style="text-align: center;">Recibe los últimos artículos vía <a tal:attributes="href string: ${rss}">RSS</a>, <a tal:attributes="href string: ${atom}">Atom</a>, o nuestra <a tal:attributes="href string: ${telegram}" rel="noopener" target="_blank">comunidad de <strong>Telegram</strong></a> — y comparte tu opinión allí.
+        </span>
+        <span tal:condition="python:context.restrictedTraverse('@@plone_portal_state').language().startswith('en')"
+           style="text-align: center;">Get the latest articles via <a tal:attributes="href string: ${rss}">RSS</a>, <a tal:attributes="href string: ${atom}">Atom</a>, or our <a tal:attributes="href string: ${telegram}" rel="noopener" target="_blank"><strong>Telegram</strong> community</a> — and share your opinion there.
+        </span>
+    </div>
+
+  </div>
+
+</html>
