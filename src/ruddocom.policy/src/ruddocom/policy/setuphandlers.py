@@ -35,6 +35,7 @@ def post_install(context):
     setup_language_folder_redirects(context)
     setup_folderish_types(context)
     hide_colophon(context)
+    destroy_portlets_in_lrfs(context)
     logger("Post-install complete")
 
 
@@ -43,12 +44,17 @@ def uninstall(context):
     # Do something at the end of the uninstallation of this package.
 
 
+def get_portlet_assignments(manager_name, for_):
+    manager = getUtility(IPortletManager, name=manager_name, context=for_)
+    mapping = getMultiAdapter((for_, manager), IPortletAssignmentMapping)
+    return mapping
+
+
 def hide_colophon(context=None):
     portal = api.portal.get()
     manager_name = "plone.footerportlets"
-    manager = getUtility(IPortletManager, name=manager_name, context=portal)
-    mapping = getMultiAdapter((portal, manager), IPortletAssignmentMapping)
     changed = False
+    mapping = get_portlet_assignments(manager_name, portal)
     for id_, assignment in mapping.items():
         if id_ != "colophon":
             continue
@@ -59,6 +65,19 @@ def hide_colophon(context=None):
             settings["visible"] = False
     if changed:
         logger("Successfully hid the colophon")
+
+
+def destroy_portlets_in_lrfs(context=None):
+    portal = api.portal.get()
+    manager_name = "plone.footerportlets"
+    for folder_id in ["en", "es"]:
+        mapping = get_portlet_assignments(manager_name, portal[folder_id])
+        changed = False
+        for id_, unused_assignment in list(mapping.items()):
+            changed = True
+            del mapping[id_]
+    if changed:
+        logger("Successfully destroyed the crufty portlets")
 
 
 def setup_multilingual(context=None):

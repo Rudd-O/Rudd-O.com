@@ -125,6 +125,15 @@
       profile="ruddocom.policy:default"
       />
 
+  <genericsetup:upgradeStep
+      title="Destroy legacy portlets"
+      description="Portlets: destroy crufty"
+      source="*"
+      destination="1012"
+      handler=".setuphandlers.destroy_portlets_in_lrfs"
+      profile="ruddocom.policy:default"
+      />
+
   <genericsetup:registerProfile
       name="uninstall"
       title="Rudd-O.com policy (uninstall)"
