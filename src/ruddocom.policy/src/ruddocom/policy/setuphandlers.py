@@ -36,7 +36,31 @@ def post_install(context):
     setup_folderish_types(context)
     hide_colophon(context)
     destroy_portlets_in_lrfs(context)
+    setup_cookies(context)
     logger("Post-install complete")
+
+
+def setup_cookies(context):
+    portal_url = getToolByName(context, "portal_url")
+    portal = portal_url.getPortalObject()
+    l = portal.acl_users.session
+    changed = False
+    t = 30 * 24 * 86400
+    if l.timeout != t:
+        # Session times out in 30 days.
+        l.timeout = t
+        changed = True
+    f = 0
+    if l.cookie_lifetime != f:
+        # Cookie lasts forever.
+        l.cookie_lifetime = f
+        changed = True
+    if not l.secure:
+        # Cookie is network-only.
+        l.secure = True
+        changed = True
+    if changed:
+        logger("Cookie expiry time, lifetime, and security status set.")
 
 
 def uninstall(context):
