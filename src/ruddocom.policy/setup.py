@@ -60,6 +60,7 @@ setup(
         'collective.relationhelpers',
         'collective.exportimport',
         'collective.folderishtypes[dexterity]',
+        'collective.searchandreplace',
     ],
     extras_require={
         'test': [

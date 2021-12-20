@@ -139,3 +139,11 @@ def setup_folderish_types(context=None):
         "profile-collective.folderishtypes.dx:default"
     )
     logger("Done importing folderish types")
+
+
+def install_searchandreplace(context=None):
+    setup_tool = api.portal.get_tool("portal_setup")
+    setup_tool.runAllImportStepsFromProfile(
+        "profile-collective.searchandreplace:default"
+    )
+    logger("Done installing collective.searchandreplace")
