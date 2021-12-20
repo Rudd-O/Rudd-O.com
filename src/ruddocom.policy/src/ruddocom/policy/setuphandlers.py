@@ -41,7 +41,7 @@ def post_install(context):
 
 
 def setup_cookies(context):
-    portal_url = getToolByName(context, "portal_url")
+    portal_url = api.portal.get_tool("portal_url")
     portal = portal_url.getPortalObject()
     l = portal.acl_users.session
     changed = False
