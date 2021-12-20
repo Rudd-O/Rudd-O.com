@@ -28,3 +28,7 @@ def export(adjustedzope2cmd, unused_extra_cmdline_args):
 
 def folderize(adjustedzope2cmd, unused_extra_cmdline_args):
     return _func("folderize", adjustedzope2cmd, unused_extra_cmdline_args)
+
+
+def add_content_redirects(adjustedzope2cmd, unused_extra_cmdline_args):
+    return _func("add_content_redirects", adjustedzope2cmd, unused_extra_cmdline_args)

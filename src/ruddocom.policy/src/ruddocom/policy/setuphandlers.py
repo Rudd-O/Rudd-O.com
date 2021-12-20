@@ -90,9 +90,13 @@ def setup_multilingual(context=None):
     logger("Done setting up multilingual")
 
 
+def add_redirect(source_path, target_path):
+    storage = getUtility(IRedirectionStorage)
+    storage.add(source_path, target_path)
+
+
 def setup_language_folder_redirects(context=None):
     portal = api.portal.get()
-    storage = getUtility(IRedirectionStorage)
     for path, redirect in [
         ("/en/assets", "/en/uploads"),
         ("/es/recursos", "/es/uploads"),
@@ -101,7 +105,7 @@ def setup_language_folder_redirects(context=None):
         phys_path = obj.absolute_url_path()
         root = phys_path[: -len(path)]
         phys_redirect = root + redirect
-        storage.add(phys_redirect, phys_path)
+        add_redirect(phys_redirect, phys_path)
     logger("Done setting up language redirects")
 
 

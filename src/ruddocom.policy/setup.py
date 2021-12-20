@@ -83,5 +83,6 @@ setup(
     import = ruddocom.policy.ctl:import_
     export = ruddocom.policy.ctl:export
     folderize = ruddocom.policy.ctl:folderize
+    add_content_redirects = ruddocom.policy.ctl:add_content_redirects
     """,
 )
