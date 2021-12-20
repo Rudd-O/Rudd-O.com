@@ -25,7 +25,6 @@ logger = logging.getLogger(os.path.basename(__file__))
 logger.setLevel(logging.INFO)
 
 
-
 @contextlib.contextmanager
 def externalEditorEnabled(app):
     # Workaround to bypass the externalEditorEnabled demand
@@ -37,8 +36,8 @@ def externalEditorEnabled(app):
 
 
 def remove_lrfs():
-    catalog = api.portal.get_tool('portal_catalog')
-    results = catalog.searchResults(**{'portal_type': 'LRF'})
+    catalog = api.portal.get_tool("portal_catalog")
+    results = catalog.searchResults(**{"portal_type": "LRF"})
 
     deleted = False
     for r in results:
@@ -65,7 +64,6 @@ class fakeredirectsfile(object):
 
 
 class StatusObject(object):
-
     def __init__(self):
         self.messages = []
 
@@ -73,14 +71,16 @@ class StatusObject(object):
         self.messages.append((a, kw))
 
 
-def full_import(portal, from_path, what=''):
+def full_import(portal, from_path, what=""):
     from_path = Path(from_path)
     request = aq_get(portal, "REQUEST")
 
     # Workaround to enable import view, otherwise it fails.
     request.form["form.submitted"] = True
 
-    for step in 'content relations translations members localroles defaultpages ordering discussion portlets'.split():
+    for (
+        step
+    ) in "content relations translations members localroles defaultpages ordering discussion portlets".split():
         if what and step not in what:
             continue
 
@@ -97,23 +97,34 @@ def full_import(portal, from_path, what=''):
     step = "redirects"
     if step in what or not what:
         # Workaround to enable CSV download.
+        skip = False
         request.form["form.button.Upload"] = "Download+all+as+CSV"
         path = from_path / ("%s.csv" % step)
         with path.open("r") as fo:
-            f = fakeredirectsfile(fo)
-        request.form["file"] = f
-        logger.info("Importing %s to site", step)
-        view = api.content.get_view("redirection-controlpanel", portal, request)
-        view.csv_errors = []
-        view.form_errors = {}
-        statusObject = StatusObject()
-        view.upload(f, portal, getUtility(IRedirectionStorage), statusObject)
-        if view.form_errors:
-            assert 0, view.form_errors
-        if view.csv_errors:
-            assert 0, "Errors during redirects import:\n\n" + "\n".join(str(s) for s in view.csv_errors)
-    del request.form["form.button.Upload"]
-    del request.form["file"]
+            lines = fo.read().strip().splitlines()
+            if len(lines) < 2:
+                # Skip import, it's empty.
+                skip = True
+        if not skip:
+            with path.open("r") as fo:
+                f = fakeredirectsfile(fo)
+            request.form["file"] = f
+            logger.info("Importing %s to site", step)
+            view = api.content.get_view("redirection-controlpanel", portal, request)
+            view.csv_errors = []
+            view.form_errors = {}
+            statusObject = StatusObject()
+            view.upload(f, portal, getUtility(IRedirectionStorage), statusObject)
+            if view.form_errors:
+                assert 0, view.form_errors
+            if view.csv_errors:
+                assert 0, "Errors during redirects import:\n\n" + "\n".join(
+                    str(s) for s in view.csv_errors
+                )
+    if "form.button.Upload" in request.form:
+        del request.form["form.button.Upload"]
+    if "file" in request.form:
+        del request.form["file"]
 
     request.form["form.submitted"] = True
 
