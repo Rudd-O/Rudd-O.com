@@ -1,4 +1,4 @@
-.PHONY = cachebust
+.PHONY = cachebust build
 
 
 cachebust:
@@ -6,3 +6,6 @@ cachebust:
 	GITREV=$$(git rev-parse HEAD) && echo sed -i "s|/[+][+]unique[+][+][a-z0-9]*/|/++unique++$$GITREV/|" src/ruddocom.policy/src/ruddocom/policy/theme/manifest.cfg && sed -i "s|/[+][+]unique[+][+][a-z0-9]*/|/++unique++$$GITREV/|" src/ruddocom.policy/src/ruddocom/policy/theme/manifest.cfg
 	git add -p
 	git commit -a
+
+autobuild:
+	cd src/ruddocom.policy/src/ruddocom/policy/theme/styles && npm run watch
