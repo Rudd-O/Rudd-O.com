@@ -39,16 +39,6 @@ figure figcaption {
   color: #767676;
 }
 
-/* Hide "Image" label on portal type Picture, view template. */
-//.template-view.portaltype-picture #content-core label {
-  //display: none;
-//}
-
-/* Hide "Categorization" fieldset on portal type Picture, view template. */
-//.template-view.portaltype-picture #form-groups-categorization {
-  //display: none;
-//}
-
 /* Reduce prominence of contents listing on view templates of common portal types. */
 .template-view.portaltype-picture .contentsListing,
 .template-view.portaltype-document .contentsListing,
@@ -72,9 +62,9 @@ figure figcaption {
 //}
 
 /* Avoid pictures stacking up in listings. */
-//.template-listing_view .entries .entry {
-  //clear: right;
-//}
+.template-listing_view #content-core .entries article {
+  clear: both;
+}
 
 /* Icon for content type Picture defined in ruddocom.policy. */
 //body#visual-portal-wrapper.pat-plone .outer-wrapper {
