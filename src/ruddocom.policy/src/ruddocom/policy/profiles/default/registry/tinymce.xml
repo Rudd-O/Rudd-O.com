@@ -168,8 +168,10 @@
       <element>Invisible Grid|invisible-grid</element>
     </value>
     <value key="templates">[&#13;
-    {"title": "Image with caption", "url": "++theme++ruddocom/tinymce-templates/image-with-caption.html"},&#13;
-    {"title": "Image Grid 2x2", "url": "++theme++ruddocom/tinymce-templates/image-grid-2x2.html"}&#13;
+    {"title": "Image with caption", "url": "/++theme++rudd-o.com/tinymce-templates/image-with-caption.html"},&#13;
+    {"title": "Image Grid 2x2", "url": "/++theme++rudd-o.com/tinymce-templates/image-grid-2x2.html"},&#13;
+    {"title": "List", "url": "/++theme++rudd-o.com/tinymce-templates/list.html"},&#13;
+    {"title": "Card Group", "url": "/++theme++rudd-o.com/tinymce-templates/card-group.html"}&#13;
 ]</value>
     <value key="toolbar">ltr rtl | undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | unlink plonelink ploneimage</value>
   </records>
