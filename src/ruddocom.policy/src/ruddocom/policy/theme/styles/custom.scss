@@ -49,10 +49,13 @@ figure figcaption {
   //display: none;
 //}
 
-/* Hide folder listing on portal type Picture, view template. */
-//.template-view.portaltype-picture #folder-listing {
-  //display: none;
-//}
+/* Reduce prominence of contents listing on view templates of common portal types. */
+.template-view.portaltype-picture .contentsListing,
+.template-view.portaltype-document .contentsListing,
+.template-newsitem_view.portaltype-news-item .contentsListing,
+ {
+  font-size: 75%;
+}
 
 /* Article asides. */
 //#tinymce aside, main aside {
