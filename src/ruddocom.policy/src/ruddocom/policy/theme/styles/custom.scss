@@ -1,0 +1,116 @@
+/* our custom styles */
+
+/* TinyMCE templates */
+
+// image-grid-2x2:
+.image-grid-2x2 {
+    padding: 0;
+    margin: 0 0 $grid-gutter-width 0;
+    list-style: none;
+    @include make-row();
+
+    > li {
+        @include make-col(12);
+        @include make-col(6);
+        margin-top: $grid-gutter-width
+
+        img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    }
+}
+
+/* This style allows images / videos to scale 100% width / height. */
+.scaleimage, .autoscale, .portaltype-picture #content-core img, .portaltype-Picture #content-core img {
+  width: 100%;
+  height: 100%;
+}
+
+/* By default, images inside article figures get the 100% treatment. */
+figure img {
+  width: 100%;
+  height: 100%;
+}
+
+/* Captions of article figures are centered and grey. */
+figure figcaption {
+  text-align: center;
+  color: #767676;
+}
+
+/* Hide "Image" label on portal type Picture, view template. */
+//.template-view.portaltype-picture #content-core label {
+  //display: none;
+//}
+
+/* Hide "Categorization" fieldset on portal type Picture, view template. */
+//.template-view.portaltype-picture #form-groups-categorization {
+  //display: none;
+//}
+
+/* Hide folder listing on portal type Picture, view template. */
+//.template-view.portaltype-picture #folder-listing {
+  //display: none;
+//}
+
+/* Article asides. */
+//#tinymce aside, main aside {
+  //display: block;
+  //margin-left: 1em;
+  //margin-right: 1em;
+  //@media (min-width: $grid-float-breakpoint) {
+    //margin-left: 3em;
+    //margin-right: 3em;
+  //}
+  //margin-top: 10px;
+  //margin-bottom: 10px;
+  //color: #767676;
+//}
+
+/* Avoid pictures stacking up in listings. */
+//.template-listing_view .entries .entry {
+  //clear: right;
+//}
+
+/* Icon for content type Picture defined in ruddocom.policy. */
+//body#visual-portal-wrapper.pat-plone .outer-wrapper {
+	//.contenttype-picture:before {		content: '\e810';}
+	//.contenttype-Picture:before {		content: '\e810';}
+//}
+
+/* Divide the below content body viewlet between above and below. */
+//#viewlet-below-content-body {
+  //border-top: 1px solid #eeeeee;
+  //margin-top: 10px;
+  //padding-top: 10px;
+//}
+
+/* Override body content margin bottom. */
+//body #content {
+  //margin-bottom: 0px;
+//}
+
+/* Make searchbox appear correctly in mobile. */
+//@media not (min-width: $grid-float-breakpoint) {
+
+  //#portal-anontools li {
+    //margin: 12px 0 -12px 0;
+  //}
+
+  //#portal-searchbox {
+    //position: absolute;
+    //margin-top: 46px;
+  //}
+
+//}
+
+/* Hide author and time / date in collections. */
+/*.portaltype-collection .documentByLine {
+  display: none;
+}*/
+
+/* Hide title in front page. */
+/*.section-everything .documentFirstHeading {
+  display: None;
+}*/
