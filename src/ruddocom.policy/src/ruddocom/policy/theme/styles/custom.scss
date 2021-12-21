@@ -47,20 +47,6 @@ figure figcaption {
   font-size: 75%;
 }
 
-/* Article asides. */
-//#tinymce aside, main aside {
-  //display: block;
-  //margin-left: 1em;
-  //margin-right: 1em;
-  //@media (min-width: $grid-float-breakpoint) {
-    //margin-left: 3em;
-    //margin-right: 3em;
-  //}
-  //margin-top: 10px;
-  //margin-bottom: 10px;
-  //color: #767676;
-//}
-
 /* Avoid pictures stacking up in listings. */
 .template-listing_view #content-core .entries article {
   clear: both;
@@ -86,4 +72,19 @@ figure figcaption {
 /* Hide byline in collection page. */
 .portaltype-collection.template-listing_view header div#viewlet-below-content-title, {
   display: None;
+}
+
+/* Article asides. */
+#tinymce aside, #content-core aside {
+  display: block;
+  font-style: italic;
+  margin-left: 1em;
+  margin-right: 1em;
+  //@media (min-width: $grid-float-breakpoint) {
+    //margin-left: 3em;
+    //margin-right: 3em;
+  //}
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: var(--bs-secondary);
 }
