@@ -72,12 +72,9 @@ figure figcaption {
 	//.contenttype-Picture:before {		content: '\e810';}
 //}
 
-/* Divide the below content body viewlet between above and below. */
-//#viewlet-below-content-body {
-  //border-top: 1px solid #eeeeee;
-  //margin-top: 10px;
-  //padding-top: 10px;
-//}
+#portal-footer .doormat p {
+	margin-bottom: 0;
+}
 
 /* Override body content margin bottom. */
 //body #content {
