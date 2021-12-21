@@ -8,5 +8,6 @@
     <dependency>profile-plone.app.multilingual:default</dependency>
     <dependency>profile-collective.folderishtypes.dx:default</dependency>
     <dependency>profile-collective.searchandreplace:default</dependency>
+    <dependency>profile-plone.app.theming:default</dependency>
   </dependencies>
 </metadata>
