@@ -11,6 +11,7 @@
   </record>
 
   <records interface="Products.CMFPlone.interfaces.controlpanel.ISiteSchema" prefix="plone">
+    <value key="site_title">Rudd-O.com</value>
     <value key="display_publication_date_in_byline">True</value>
     <value key="enable_sitemap">True</value>
     <value key="exposeDCMetaTags">True</value>
