@@ -12,14 +12,68 @@
 }
 
 @media print {
+  // https://www.sitepoint.com/css-printer-friendly-pages/
+
   #section-byline, nav.autotoc-nav, #section-document-actions, #section-category {
     display: None;
   }
   body {
     font-size: 80%;
+    margin: 0;
   }
-  body .outer-wrapper .container {
+  body > .outer-wrapper > .container {
     // Make the entire site as wide as the page.
     max-width: 100%;
+  }
+  body > #edit-bar {
+    display: none;
+  }
+  @page {
+    margin-left: 1.8cm;
+    margin-right: 1.8cm;
+    margin-top: 2.5cm;
+    margin-bottom: 1.8cm;
+  }
+  @page :footer {
+    display: none
+  }
+  @page :header {
+    display: none
+  }
+  article > header, article > header > .lead {
+    margin-bottom: 1rem;
+  }
+}
+
+.onlyprint {
+  display: none;
+}
+
+@media print {
+  .onlyprint {
+    display: block;
+  }
+  .noprint {
+    display: none;
+  }
+  tr.onlyprint {
+    display: table-row;
+  }
+}
+
+#content-core div.contact-info {
+  margin-bottom: 1rem;
+}
+#content-core table.contact-info td {
+  padding: 0.25rem;
+}
+@media print {
+  #content-core div.contact-info {
+    float: right;
+    border-left: 1px solid black;
+    padding-left: 0.5cm;
+    margin-left: 0.5cm;
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
   }
 }
