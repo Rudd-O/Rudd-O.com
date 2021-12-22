@@ -10,9 +10,13 @@ from zope.component.hooks import setSite
 productstoupgrade = sys.argv[3:]
 
 commit = True
+force = False
 if "-n" in productstoupgrade:
     commit = False
     productstoupgrade.remove("-n")
+if "-f" in productstoupgrade:
+    force = True
+    productstoupgrade.remove("-f")
 
 if not productstoupgrade:
     raise Exception(
@@ -36,12 +40,21 @@ t = transaction.get()
 t.note("Products upgraded on %s: %s" % (siteid, ", ".join(productstoupgrade)))
 
 for productid in productstoupgrade:
-    if qi.is_product_installed(productid):
-        qi.upgrade_product(productid)
-        changes.append("Product %s successfully upgraded on %s." % (productid, siteid))
-    else:
-        qi.install_product(productid)
+    if force:
+        prof = qi.get_install_profile(productid)
+        if not prof:
+            raise Exception("Could not reinstall %s: no profile found." % prof)
+        profid = prof["id"]
+        qi.ps.runAllImportStepsFromProfile('profile-%s' % profid)
+        changes.append("Product %s forcefully reinstalled on %s." % (productid, siteid))
+    elif not qi.is_product_installed(productid):
+        if not qi.install_product(productid):
+            raise Exception("Product %s not installed." % productid)
         changes.append("Product %s successfully installed on %s." % (productid, siteid))
+    else:
+        if not qi.upgrade_product(productid):
+            raise Exception("Product %s not upgraded." % productid)
+        changes.append("Product %s successfully upgraded on %s." % (productid, siteid))
 
 if commit:
     t.commit()
