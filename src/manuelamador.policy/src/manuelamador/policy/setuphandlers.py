@@ -31,7 +31,7 @@ class HiddenProfiles(object):
 
 def post_install(context):
     """Post install script"""
-    hide_colophon(context)
+    hide_colophon_and_footer(context)
     setup_cookies(context)
     logger("Post-install complete")
 
@@ -70,13 +70,13 @@ def get_portlet_assignments(manager_name, for_):
     return mapping
 
 
-def hide_colophon(context=None):
+def hide_colophon_and_footer(context=None):
     portal = api.portal.get()
     manager_name = "plone.footerportlets"
     changed = False
     mapping = get_portlet_assignments(manager_name, portal)
     for id_, assignment in mapping.items():
-        if id_ != "colophon":
+        if id_ != "colophon" and id != "@@footer":
             continue
         assignments = aq_inner(portal)
         settings = IPortletAssignmentSettings(assignment)
@@ -84,4 +84,4 @@ def hide_colophon(context=None):
             changed = True
             settings["visible"] = False
     if changed:
-        logger("Successfully hid the colophon")
+        logger("Successfully hid the colophon and default footer")
