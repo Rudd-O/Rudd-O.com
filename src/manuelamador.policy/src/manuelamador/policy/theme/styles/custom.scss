@@ -10,3 +10,9 @@
 .portaltype-collection.template-listing_view header div#viewlet-below-content-title, {
   display: None;
 }
+
+@media print {
+  #section-byline, nav.autotoc-nav {
+    display: None;
+  }
+}
