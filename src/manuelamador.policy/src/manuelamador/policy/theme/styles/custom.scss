@@ -12,7 +12,14 @@
 }
 
 @media print {
-  #section-byline, nav.autotoc-nav {
+  #section-byline, nav.autotoc-nav, #section-document-actions, #section-category {
     display: None;
+  }
+  body {
+    font-size: 80%;
+  }
+  body .outer-wrapper .container {
+    // Make the entire site as wide as the page.
+    max-width: 100%;
   }
 }
