@@ -7,4 +7,29 @@
    <property name="visible">True</property>
   </object>
  </object>
+ <object name="site_actions" meta_type="CMF Action Category">
+  <object name="accessibility" meta_type="CMF Action" i18n:domain="plone">
+   <property name="visible">False</property>
+  </object>
+  <object name="spanish-edition" meta_type="CMF Action" i18n:domain="ruddocom.policy">
+   <property name="title" i18n:translate="">🇪🇸 Edición en Español</property>
+   <property name="description" i18n:translate="">Visitar la edición en Español de Rudd-O.com</property>
+   <property name="url_expr">string:${globals_view/navigationRootUrl}/es</property>
+   <property name="available_expr">python:'es' not in object.restrictedTraverse('@@plone_portal_state').language()</property>
+   <property name="visible">True</property>
+   <property name="permissions">
+    <element value="View"/>
+   </property>
+  </object>
+  <object name="english-edition" meta_type="CMF Action" i18n:domain="ruddocom.policy">
+   <property name="title" i18n:translate="">🇺🇸 English edition</property>
+   <property name="description" i18n:translate="">Go to the English edition of Rudd-O.com</property>
+   <property name="url_expr">string:${globals_view/navigationRootUrl}/en</property>
+   <property name="available_expr">python:'en' not in object.restrictedTraverse('@@plone_portal_state').language()</property>
+   <property name="visible">True</property>
+   <property name="permissions">
+    <element value="View"/>
+   </property>
+  </object>
+ </object>
 </object>
