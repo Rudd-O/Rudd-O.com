@@ -76,7 +76,7 @@ def hide_colophon_and_footer(context=None):
     changed = False
     mapping = get_portlet_assignments(manager_name, portal)
     for id_, assignment in mapping.items():
-        if id_ != "colophon" and id != "@@footer":
+        if id_ != "colophon" and id != "footer":
             continue
         assignments = aq_inner(portal)
         settings = IPortletAssignmentSettings(assignment)
