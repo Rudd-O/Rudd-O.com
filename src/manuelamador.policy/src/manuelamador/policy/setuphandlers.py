@@ -1,19 +1,19 @@
 # -*- coding: utf-8 -*-
 import logging
 
-from plone import api
 from Acquisition import aq_inner
 from Products.CMFPlone.interfaces import INonInstallable
-from zope.interface import implementer
-from zope.component import getUtility
+from plone import api
 from plone.app.multilingual.browser.setup import SetupMultilingualSite
 from plone.app.redirector.interfaces import IRedirectionStorage
-from zope.component import getUtility, getMultiAdapter
-from plone.portlets.interfaces import IPortletManager
 from plone.portlets.interfaces import (
     IPortletAssignmentMapping,
     IPortletAssignmentSettings,
 )
+from plone.portlets.interfaces import IPortletManager
+from zope.component import getUtility
+from zope.component import getUtility, getMultiAdapter
+from zope.interface import implementer
 
 
 PROFILE = "manuelamador.policy:default"
@@ -76,12 +76,11 @@ def hide_colophon_and_footer(context=None):
     changed = False
     mapping = get_portlet_assignments(manager_name, portal)
     for id_, assignment in mapping.items():
-        if id_ != "colophon" and id != "footer":
-            continue
         assignments = aq_inner(portal)
         settings = IPortletAssignmentSettings(assignment)
-        if settings.get("visible", "unset") in (True, "unset"):
-            changed = True
-            settings["visible"] = False
+        if id_ == "colophon" or id_ == "footer":
+            if settings.get("visible", "unset") != False:
+                changed = True
+                settings["visible"] = False
     if changed:
         logger("Successfully hid the colophon and default footer")
