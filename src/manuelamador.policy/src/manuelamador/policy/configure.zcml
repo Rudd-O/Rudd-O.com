@@ -35,6 +35,15 @@
       post_handler=".setuphandlers.uninstall"
       />
 
+  <genericsetup:upgradeStep
+      title="Hide portlets"
+      description="Portlets: hide"
+      source="*"
+      destination="1015"
+      handler=".setuphandlers.hide_colophon_and_footer"
+      profile="manuelamador.policy:default"
+      />
+
   <utility
       factory=".setuphandlers.HiddenProfiles"
       name="manuelamador.policy-hiddenprofiles"
