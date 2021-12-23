@@ -35,6 +35,18 @@
   <!-- move global nav -->
   <replace css:theme-children="#mainnavigation" css:content-children="#portal-mainnavigation" method="raw" />
 
+  <!-- move anon tools items to footer actions -->
+  <replace css:content-children="ul.actions-site_actions">
+    <xsl:for-each select="//*[@id='portal-anontools']/ul/*">
+      <xsl:copy-of select="." />
+    </xsl:for-each>
+    <xsl:for-each select="//*[@class='actions-site_actions']/li">
+      <xsl:copy-of select="." />
+    </xsl:for-each>
+  </replace>
+  <drop css:content="#portal-anontools" />
+  <drop css:theme="#portal-anontools" />
+
   <!-- Content header -->
   <replace css:theme="#portal-top" css:content-children="#portal-top" />
 
@@ -138,6 +150,7 @@
   <!-- toolbar -->
   <replace css:theme="#portal-toolbar" css:content="#edit-bar" css:if-not-content=".ajax_load" css:if-content=".userrole-authenticated" />
   <drop css:theme="#portal-toolbar" css:if-content=".userrole-anonymous" />
-  <replace css:theme="#anonymous-actions" css:content-children="#portal-personaltools-wrapper" css:if-not-content=".ajax_load" css:if-content=".userrole-anonymous" />
+  <replace css:theme="#anonymous-actions" css:content="#portal-personaltools-wrapper" css:if-not-content=".ajax_load" css:if-content=".userrole-anonymous" />
+
 
 </rules>

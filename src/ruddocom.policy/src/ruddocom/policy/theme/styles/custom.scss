@@ -1,5 +1,52 @@
 /* our custom styles */
 
+
+/* Header styles */
+
+body header#content-header {
+  color: white;
+  background-color: $primary;
+}
+
+body #portal-header {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  flex-direction: row-reverse;
+  margin: 0;
+  padding: $spacer * 1.25 0 0 0;
+  text-align: center;
+
+  @include media-breakpoint-up($nav-main-breakpoint) {
+    text-align: left;
+    position: relative;
+    @include make-row(0rem);
+    margin: 0;
+    padding: $spacer * 1.25 0 $spacer * 1.25 0;
+    flex-wrap: wrap-reverse;
+  }
+}
+
+body #portal-logo {
+  margin-top: 0;
+}
+
+body #portal-searchbox .searchSection #searchbox_currentfolder_only,
+body #portal-searchbox .searchSection .form-check-label,
+{
+  display: none;
+}
+
+body #portal-searchbox {
+  @include media-breakpoint-down($nav-main-breakpoint) {
+    margin-left: 4.2rem;
+    margin-bottom: -2.87rem;
+  }
+}
+
+body #edit-zone .plone-toolbar-logo {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
 /* TinyMCE templates */
 
 // image-grid-2x2:
