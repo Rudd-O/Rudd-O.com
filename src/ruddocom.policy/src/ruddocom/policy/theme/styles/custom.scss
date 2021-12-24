@@ -33,6 +33,7 @@ body #portal-logo {
 /* Search box adjustments */
 
 body #portal-searchbox [type="text"] {
+  background-color: rgba(255, 255, 255, 0.85);
   @include media-breakpoint-up($nav-main-breakpoint) {
     width: 12rem;
   }
@@ -49,6 +50,10 @@ body #portal-searchbox {
     margin-left: 4.2rem;
     margin-bottom: -2.87rem;
   }
+}
+
+body header#content-header .livesearch-results {
+  color: $body-color;
 }
 
 /* Search box adjustments end */
