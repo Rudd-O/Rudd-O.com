@@ -1,15 +1,12 @@
 [buildout]
 # Directory common to all deployments.
-deployment-basedir = {{ deploymentdir }}
+deployment-basedir = {{ deployments_basedir }}
 
 # Place where this deployment keeps its files.
-deployment-dir = {{ deploymentdir }}/deployments/{{ item.key }}
-
-# Base directory for data of all deployments.
-data-basedir = {{ datadir }}
+deployment-dir = {{ deployment_target_dir }}
 
 # Place where this deployment keeps its data.
-data-dir = {{ datadir }}/{{ item.key }}
+data-dir = {{ deployment_data_dir }}
 
 extends = 
     base.cfg
