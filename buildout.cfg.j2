@@ -20,8 +20,6 @@ zeo-address = ${buildout:data-dir}/var/zeosocket
 http-address = {{ item.value.zserver_address }}
 webdav-address = {{ item.value.webdav_address }}
 webdav-source-port = {{ item.value.webdav_address.split(":")[1] }}
-# Additional clients:
-debugger-address = {{ item.value.debugger_address }}
 
 zserver-threads = {{ item.value.threads }}
 
