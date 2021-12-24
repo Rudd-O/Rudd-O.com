@@ -30,6 +30,15 @@ body #portal-logo {
   margin-top: 0;
 }
 
+/* Search box adjustments */
+
+body #portal-searchbox [type="text"] {
+  background-color: rgba(255, 255, 255, 0.85);
+  @include media-breakpoint-up($nav-main-breakpoint) {
+    width: 12rem;
+  }
+}
+
 body #portal-searchbox .searchSection #searchbox_currentfolder_only,
 body #portal-searchbox .searchSection .form-check-label,
 {
@@ -42,6 +51,12 @@ body #portal-searchbox {
     margin-bottom: -2.87rem;
   }
 }
+
+body header#content-header .livesearch-results {
+  color: $body-color;
+}
+
+/* Search box adjustments end */
 
 body #edit-zone .plone-toolbar-logo {
   background-color: rgba(0, 0, 0, 0.5);

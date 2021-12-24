@@ -11,6 +11,26 @@
   display: None;
 }
 
+/* Search box adjustments */
+
+body #portal-searchbox [type="text"] {
+  @include media-breakpoint-up($nav-main-breakpoint) {
+    width: 7rem;
+  }
+}
+
+body #portal-searchbox .searchSection #searchbox_currentfolder_only,
+body #portal-searchbox .searchSection .form-check-label,
+{
+  display: none;
+}
+
+body #portal-searchbox form.pat-livesearch {
+  min-width: 0;
+}
+
+/* Search box adjustments end */
+
 @media print {
   // https://www.sitepoint.com/css-printer-friendly-pages/
 
