@@ -33,8 +33,3 @@ class CustomLeadImageViewlet(ViewletBase):
                     self.aspect_ratio = "tall"
                 elif width > (height * 1.3):
                     self.aspect_ratio = "wide"
-
-"""
- tal:define="scale_func context/@@images;
-             scaled_image python: getattr(context.aq_explicit, 'image', False) and scale_func.scale('image', scale='large')"
-             """
