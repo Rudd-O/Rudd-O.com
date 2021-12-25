@@ -11,7 +11,34 @@
   display: None;
 }
 
+/* Logo adjustments */
+
+body #portal-header {
+  @include media-breakpoint-down($nav-main-breakpoint) {
+    margin-bottom: 0;
+  }
+}
+
+body #portal-header #portal-logo {
+  margin-top: 0;
+  @include media-breakpoint-down($nav-main-breakpoint) {
+    flex-grow: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+  }
+}
+
+/* Logo adjustments end */
+
+
 /* Search box adjustments */
+
+body #portal-searchbox {
+  @include media-breakpoint-up($nav-main-breakpoint) {
+    margin-top: 0;
+  }
+}
 
 body #portal-searchbox [type="text"] {
   @include media-breakpoint-up($nav-main-breakpoint) {
