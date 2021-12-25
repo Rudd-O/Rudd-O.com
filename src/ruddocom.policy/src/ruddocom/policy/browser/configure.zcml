@@ -25,4 +25,28 @@
       template="templates/picture.pt"
       />
 
+  <!-- add my own viewlet for lead image -->
+  <browser:viewlet
+    name="contentleadimage-abovetitle"
+    for="plone.app.contenttypes.behaviors.leadimage.ILeadImage"
+    view="plone.app.layout.globals.interfaces.IViewView"
+    class="plone.app.contenttypes.behaviors.viewlets.LeadImageViewlet"
+    manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
+    template="templates/leadimage.pt"
+    layer="ruddocom.policy.interfaces.IRuddocomPolicyLayer"
+    permission="zope2.View"
+    />
+
+  <!-- override default viewlet for lead image -->
+  <browser:viewlet
+    name="contentleadimage"
+    for="plone.app.contenttypes.behaviors.leadimage.ILeadImage"
+    view="plone.app.layout.globals.interfaces.IViewView"
+    class=".viewlets.LeadImageViewlet"
+    manager="plone.app.layout.viewlets.interfaces.IAboveContentTitle"
+    template="templates/leadimage.pt"
+    layer="ruddocom.policy.interfaces.IRuddocomPolicyLayer"
+    permission="zope2.View"
+    />
+
 </configure>
