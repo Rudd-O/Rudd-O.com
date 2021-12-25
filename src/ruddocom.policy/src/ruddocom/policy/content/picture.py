@@ -1,4 +1,5 @@
 from plone.app.multilingual.dx.interfaces import ILanguageIndependentField
+from plone.dexterity.content import Item
 from plone.namedfile import field
 from plone.supermodel import model
 from zope import schema
@@ -22,3 +23,10 @@ class IPicture(model.Schema):
 
 alsoProvides(IPicture["picture"], ILanguageIndependentField)
 alsoProvides(IPicture["source"], ILanguageIndependentField)
+
+
+class Picture(Item):
+
+    @property
+    def image(self):
+        return self.picture
