@@ -30,7 +30,7 @@
     name="contentleadimage-abovetitle"
     for="plone.app.contenttypes.behaviors.leadimage.ILeadImage"
     view="plone.app.layout.globals.interfaces.IViewView"
-    class="plone.app.contenttypes.behaviors.viewlets.LeadImageViewlet"
+    class=".viewlets.CustomLeadImageViewlet"
     manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
     template="templates/leadimage.pt"
     layer="ruddocom.policy.interfaces.IRuddocomPolicyLayer"

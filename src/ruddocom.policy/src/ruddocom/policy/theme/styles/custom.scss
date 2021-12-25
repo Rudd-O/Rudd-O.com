@@ -58,6 +58,39 @@ body header#content-header .livesearch-results {
 
 /* Search box adjustments end */
 
+/* Lead image */
+
+body #section-leadimage figure {
+  @include media-breakpoint-up($nav-main-breakpoint) {
+    text-align: center;
+  }
+}
+
+body #section-leadimage figure > img.img-wide,
+body #section-leadimage figure > img.img-wide, {
+  @include media-breakpoint-up($nav-main-breakpoint) {
+    max-width: 70%
+  }
+}
+
+body #section-leadimage figure > img.img-squarish,
+body #section-leadimage figure > img.img-squarish, {
+  @include media-breakpoint-up($nav-main-breakpoint) {
+    max-height: 12rem;
+    width: auto;
+  }
+}
+
+body #section-leadimage figure > img.img-tall,
+body #section-leadimage figure > img.img-tall, {
+  @include media-breakpoint-up($nav-main-breakpoint) {
+    max-height: 12rem;
+    width: auto;
+  }
+}
+
+/* Lead image adjustments end */
+
 body #edit-zone .plone-toolbar-logo {
   background-color: rgba(0, 0, 0, 0.5);
 }

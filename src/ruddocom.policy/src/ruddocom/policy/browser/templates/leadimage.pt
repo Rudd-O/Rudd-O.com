@@ -1,8 +1,14 @@
 <!-- this is a straight copy of leadimage.pt from behaviors/leadimage -->
-<section id="section-leadimage" tal:condition="python: view.available" tal:define="scale_func context/@@images; scaled_image python: getattr(context.aq_explicit, 'image', False) and scale_func.scale('image', scale='large')">
+<section
+ id="section-leadimage"
+ tal:condition="python: view.available"
+ tal:define="scale_func context/@@images;
+             scaled_image python: getattr(context.aq_explicit, 'image', False) and scale_func.scale('image', scale='large');
+             aspect_ratio python: getattr(view, 'aspect_ratio', 'unknown')"
+>
 
   <figure class="newsImageContainer" tal:condition="python: scaled_image">
-      <img tal:replace="structure python: scaled_image.tag(css_class='figure-img img-fluid')" />
+      <img tal:replace="structure python: scaled_image.tag(css_class='figure-img img-fluid img-' + aspect_ratio)" />
       <figcaption class="figure-caption" tal:condition="python: getattr(context, 'image_caption', None)" tal:content="python: context.image_caption">
         Image caption
       </figcaption>
