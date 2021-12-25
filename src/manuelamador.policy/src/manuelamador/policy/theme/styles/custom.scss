@@ -11,6 +11,38 @@
   display: None;
 }
 
+/* Fonts */
+
+@font-face {
+  font-family: "Arimo";
+  src: url("Arimo-Regular.woff");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Arimo";
+  src: url("Arimo-MediumItalic.woff");
+  font-style: italic;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Arimo";
+  src: url("Arimo-Bold.woff");
+  font-style: normal;
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Arimo";
+  src: url("Arimo-BoldItalic.woff");
+  font-style: italic;
+  font-weight: bold;
+}
+
+/* Fonts end */
+
 /* Logo adjustments */
 
 body #portal-header {
