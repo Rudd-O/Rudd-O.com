@@ -1,26 +1,25 @@
 #!/usr/bin/env python
 
 import contextlib
-import logging
-import os
-import sys
-from pathlib import Path
 from io import BytesIO
+import logging
+from operator import itemgetter
+import os
+from pathlib import Path
+import sys
 
-import transaction
-from zope.component.hooks import setSite
-from zope.i18n import translate
-from plone import api
+from AccessControl.SecurityManagement import newSecurityManager
+from AccessControl.SecurityManager import setSecurityPolicy
 from Acquisition import aq_get
-from Testing.makerequest import makerequest
 from Products.CMFCore.tests.base.security import (
     PermissiveSecurityPolicy,
     OmnipotentUser,
 )
-from AccessControl.SecurityManager import setSecurityPolicy
-from AccessControl.SecurityManagement import newSecurityManager
-from operator import itemgetter
-
+from Testing.makerequest import makerequest
+from plone import api
+import transaction
+from zope.component.hooks import setSite
+from zope.i18n import translate
 
 
 logger = logging.getLogger(os.path.basename(__file__))
@@ -65,20 +64,20 @@ def full_export(portal, from_path, outputpath, what=''):
             continue
         logger.info("Exporting %s from site", step)
         export_view = api.content.get_view("export_%s" % step, portal, request)
+        request.response.stdout = BytesIO()
+        request.response._wrote = 0
         if step == "content":
             types = [x['value'] for x in portal_types(request)]
-            export_view(portal_type=types, download_to_server=1, migration=True, path=from_path, include_blobs=2)
+            export_view(portal_type=types, download_to_server=0, migration=True, path=from_path, include_blobs=2)
         else:
-            request.response.stdout = BytesIO()
-            request.response._wrote = 0
             export_view()
-            request.response.stdout.seek(0, 0)
-            reply = request.response.stdout.read()
-            pos = reply.find(b"\r\n\r\n")
-            assert pos > 0, reply[:100]
-            data = reply[pos+4:]
-            with open(os.path.join(outputpath, "%s.json" % step), "wb") as f:
-                f.write(data)
+        request.response.stdout.seek(0, 0)
+        reply = request.response.stdout.read()
+        pos = reply.find(b"\r\n\r\n")
+        assert pos > 0, reply[:100]
+        data = reply[pos+4:]
+        with open(os.path.join(outputpath, "%s.json" % step), "wb") as f:
+            f.write(data)
 
     del request.form["form.submitted"]
 
