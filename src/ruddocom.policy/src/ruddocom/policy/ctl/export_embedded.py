@@ -24,6 +24,7 @@ from zope.i18n import translate
 
 logger = logging.getLogger(os.path.basename(__file__))
 logger.setLevel(logging.INFO)
+logging.getLogger("collective.exportimport").setLevel(logging.INFO)
 
 
 def portal_types(request):

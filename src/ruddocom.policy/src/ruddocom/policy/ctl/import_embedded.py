@@ -23,6 +23,7 @@ from zope.component.hooks import setSite
 
 logger = logging.getLogger(os.path.basename(__file__))
 logger.setLevel(logging.INFO)
+logging.getLogger("collective.exportimport").setLevel(logging.INFO)
 
 
 @contextlib.contextmanager
