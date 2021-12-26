@@ -1,8 +1,10 @@
 //// VARIABLES
 // ... add your variables here
 
-$enable-roboto-webfont: true;
+$enable-roboto-webfont: false;
 $roboto-base-path: "../../../++theme++barceloneta/roboto/";
+$font-family-sans-serif: "Liera Sans", "Helvetica Neue", Helvetica, Arial, sans-serif!default;
+
 $primary: #680904;
 $footer-bg: #f4f4f4;
 $footer-color: #333333;

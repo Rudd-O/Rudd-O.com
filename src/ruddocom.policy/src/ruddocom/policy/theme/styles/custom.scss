@@ -1,6 +1,40 @@
 /* our custom styles */
 
 
+/* Fonts */
+
+// https://fontlibrary.org/en/font/liera-sans
+
+@font-face {
+  font-family: "Liera Sans";
+  src: url("LieraSans-Light.woff");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Liera Sans";
+  src: url("LieraSans-LightItalic.woff");
+  font-style: italic;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Liera Sans";
+  src: url("LieraSans-Bold.woff");
+  font-style: normal;
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Liera Sans";
+  src: url("LieraSans-BoldItalic.woff");
+  font-style: italic;
+  font-weight: bold;
+}
+
+/* Fonts end */
+
 /* Header styles */
 
 body header#content-header {
