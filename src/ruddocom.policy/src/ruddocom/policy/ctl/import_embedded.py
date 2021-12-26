@@ -147,6 +147,12 @@ def full_import(portal, from_path, what=""):
 
 args = sys.argv[3:]
 
+commit = True
+if "-n" in args:
+    assert 0, "Nondestructive imports not supported, since exportimport commits transactions all the time."
+    args.remove("-n")
+    commit = False
+
 if not args:
     raise Exception("the site to import should be the first argument")
 
@@ -164,4 +170,5 @@ t.note("Import of %s on %s completed" % (what, siteid))
 with externalEditorEnabled(app):
     full_import(site, importpath, what)
 
-t.commit()
+if commit:
+    t.commit()
