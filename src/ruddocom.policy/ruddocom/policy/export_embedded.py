@@ -59,6 +59,9 @@ def full_export(portal, from_path, outputpath, what=''):
     for step in 'content relations translations members localroles defaultpages ordering discussion portlets'.split():
         if what and step not in what:
             continue
+        if step == "content":
+            logger.error("Skipping %s since it does not work", step)
+            continue
         logger.info("Exporting %s from site", step)
         export_view = api.content.get_view("export_%s" % step, portal, request)
         request.response.stdout = BytesIO()
