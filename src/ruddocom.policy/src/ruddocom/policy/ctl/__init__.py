@@ -3,10 +3,11 @@
 import os
 
 
-def _func(fname, adjustedzope2cmd, unused_extra_cmdline_args):
+def _func(fname, adjustedzope2cmd, unused_extra_cmdline_args, no_request=False):
     embedded = os.path.join(os.path.dirname(__file__), "%s_embedded.py" % fname)
     adjustedzope2cmd.options.program += [fname]
     adjustedzope2cmd.options.args = ["-c", embedded] + adjustedzope2cmd.options.args[1:]
+    adjustedzope2cmd.options.no_request = no_request
     return adjustedzope2cmd.do_run("")
 
 

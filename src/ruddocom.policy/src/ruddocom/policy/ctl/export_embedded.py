@@ -17,7 +17,6 @@ from Products.CMFCore.tests.base.security import (
 )
 from Testing.makerequest import makerequest
 from plone import api
-import transaction
 from zope.component.hooks import setSite
 from zope.i18n import translate
 
@@ -121,7 +120,6 @@ outputpath = args[1]
 what = args[2] if len(args) > 2 else ''
 
 site = app.unrestrictedTraverse(siteid)
-site = makerequest(site)
 setSite(site)
 
 full_export(site, exportpath, outputpath, what=what)
