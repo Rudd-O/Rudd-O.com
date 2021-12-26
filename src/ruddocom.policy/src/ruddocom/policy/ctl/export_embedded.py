@@ -18,6 +18,7 @@ from Products.CMFCore.tests.base.security import (
 from Testing.makerequest import makerequest
 from plone import api
 from zope.component.hooks import setSite
+from zope.globalrequest import setRequest
 from zope.i18n import translate
 
 
@@ -120,6 +121,9 @@ outputpath = args[1]
 what = args[2] if len(args) > 2 else ''
 
 site = app.unrestrictedTraverse(siteid)
-setSite(site)
+site_with_request = makerequest(site)
+site_with_request.REQUEST["PARENTS"] = [site, app]
+setRequest(site_with_request.REQUEST)
+setSite(site_with_request)
 
-full_export(site, exportpath, outputpath, what=what)
+full_export(site_with_request, exportpath, outputpath, what=what)

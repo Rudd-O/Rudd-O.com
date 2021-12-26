@@ -24,7 +24,7 @@ def import_(adjustedzope2cmd, unused_extra_cmdline_args):
 
 
 def export(adjustedzope2cmd, unused_extra_cmdline_args):
-    return _func("export", adjustedzope2cmd, unused_extra_cmdline_args)
+    return _func("export", adjustedzope2cmd, unused_extra_cmdline_args, no_request=True)
 
 
 def folderize(adjustedzope2cmd, unused_extra_cmdline_args):
