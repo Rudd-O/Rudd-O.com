@@ -1,6 +1,11 @@
 GITREV := $(shell git rev-parse HEAD)
-.PHONY = cachebust build
+.PHONY = cachebust build autobuild-ruddocom autobuild-manuelamador
 
+
+
+build:
+	cd src/manuelamador.policy/src/manuelamador/policy/theme && npm run build
+	cd src/ruddocom.policy/src/ruddocom/policy/theme && npm run build
 
 cachebust:
 	# lines=$$(git status --porcelain | grep -v '[?][?]' | wc -l) ; if [ "$$lines" != "0" ] ; then echo Directory dirty, not busting >&2 ; exit 1 ; fi
