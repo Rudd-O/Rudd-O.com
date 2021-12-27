@@ -1,0 +1,172 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="ruddocom.policy">
+
+  <i18n:registerTranslations directory="locales" />
+
+  <include package=".browser" />
+
+  <include file="permissions.zcml" />
+
+  <genericsetup:registerProfile
+      name="default"
+      title="Rudd-O.com policy"
+      directory="profiles/default"
+      description="Installs the ruddocom.policy add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      post_handler=".setuphandlers.post_install"
+      />
+
+  <genericsetup:upgradeStep
+      title="Setup multilingual configuration"
+      description="Setup site multilingual properties"
+      source="*"
+      destination="1001"
+      handler=".setuphandlers.setup_multilingual"
+      profile="ruddocom.policy:default"
+      />
+
+  <genericsetup:upgradeDepends
+      title="Setup language negotiation properties"
+      description="Properties: language negotiation"
+      source="*"
+      destination="1002"
+      import_steps="plone.app.registry"
+      profile="ruddocom.policy:default"
+      />
+
+  <genericsetup:upgradeStep
+      title="Setup asset redirects"
+      description="Properties: redirects for language asset folders"
+      source="*"
+      destination="1003"
+      handler=".setuphandlers.setup_language_folder_redirects"
+      profile="ruddocom.policy:default"
+      />
+
+  <genericsetup:upgradeStep
+      title="Setup folderish types"
+      description="Content: folderish types"
+      source="*"
+      destination="1004"
+      handler=".setuphandlers.setup_folderish_types"
+      profile="ruddocom.policy:default"
+      />
+
+  <genericsetup:upgradeDepends
+      title="Enable sitemap"
+      description="Properties: sitemap"
+      source="*"
+      destination="1005"
+      import_steps="plone.app.registry"
+      profile="ruddocom.policy:default"
+      />
+
+  <genericsetup:upgradeDepends
+      title="Enable Dublin Core metadata"
+      description="Properties: Dublin Core metadata"
+      source="*"
+      destination="1006"
+      import_steps="plone.app.registry"
+      profile="ruddocom.policy:default"
+      />
+
+  <genericsetup:upgradeDepends
+      title="Govern frontend cache"
+      description="Properties: cache settings"
+      source="*"
+      destination="1007"
+      import_steps="plone.app.registry"
+      profile="ruddocom.policy:default"
+      />
+
+  <genericsetup:upgradeDepends
+      title="Govern syndication and other settings"
+      description="Properties: syndication and more"
+      source="*"
+      destination="1008"
+      import_steps="plone.app.registry"
+      profile="ruddocom.policy:default"
+      />
+
+  <genericsetup:upgradeDepends
+      title="Allow per-collection syndication"
+      description="Actions: syndication button"
+      source="*"
+      destination="1009"
+      import_steps="actions"
+      profile="ruddocom.policy:default"
+      />
+
+  <genericsetup:upgradeDepends
+      title="Remove default portlets"
+      description="Portlets: remove default"
+      source="*"
+      destination="1010"
+      import_steps="portlets"
+      profile="ruddocom.policy:default"
+      />
+
+  <genericsetup:upgradeStep
+      title="Hide the colophon"
+      description="Portlets: hide colophon"
+      source="*"
+      destination="1011"
+      handler=".setuphandlers.hide_colophon"
+      profile="ruddocom.policy:default"
+      />
+
+  <genericsetup:upgradeStep
+      title="Destroy legacy portlets"
+      description="Portlets: destroy crufty"
+      source="*"
+      destination="1012"
+      handler=".setuphandlers.destroy_portlets_in_lrfs"
+      profile="ruddocom.policy:default"
+      />
+
+  <genericsetup:upgradeStep
+      title="Destroy legacy portlets"
+      description="Portlets: destroy crufty"
+      source="*"
+      destination="1013"
+      handler=".setuphandlers.setup_cookies"
+      profile="ruddocom.policy:default"
+      />
+
+  <genericsetup:upgradeStep
+      title="Destroy legacy portlets"
+      description="Portlets: destroy crufty"
+      source="*"
+      destination="1014"
+      handler=".setuphandlers.install_searchandreplace"
+      profile="ruddocom.policy:default"
+      />
+
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="Rudd-O.com policy (uninstall)"
+      directory="profiles/uninstall"
+      description="Uninstalls the ruddocom.policy add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      post_handler=".setuphandlers.uninstall"
+      />
+
+  <utility
+      factory=".setuphandlers.HiddenProfiles"
+      name="ruddocom.policy-hiddenprofiles"
+      />
+
+  <!-- -*- extra stuff goes here -*- -->
+
+  <plone:static
+      directory="theme"
+      type="theme"
+      name="rudd-o.com"
+      />
+
+
+</configure>

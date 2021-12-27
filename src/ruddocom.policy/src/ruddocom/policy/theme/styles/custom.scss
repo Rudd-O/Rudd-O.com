@@ -1,0 +1,235 @@
+/* our custom styles */
+
+
+/* Fonts */
+
+// https://fontlibrary.org/en/font/liera-sans
+
+@font-face {
+  font-family: "Liera Sans";
+  src: url("LieraSans-Light.woff");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Liera Sans";
+  src: url("LieraSans-LightItalic.woff");
+  font-style: italic;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Liera Sans";
+  src: url("LieraSans-Bold.woff");
+  font-style: normal;
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Liera Sans";
+  src: url("LieraSans-BoldItalic.woff");
+  font-style: italic;
+  font-weight: bold;
+}
+
+/* Fonts end */
+
+/* Header styles */
+
+body header#content-header {
+  color: white;
+  background-color: $primary;
+}
+
+body #portal-header {
+  display: flex;
+  flex-wrap: wrap-reverse;
+  flex-direction: row-reverse;
+  margin: 0;
+  padding: $spacer * 1.25 0 0 0;
+  text-align: center;
+
+  @include media-breakpoint-up($nav-main-breakpoint) {
+    text-align: left;
+    position: relative;
+    @include make-row(0rem);
+    margin: 0;
+    padding: $spacer * 1.25 0 $spacer * 1.25 0;
+    flex-wrap: wrap-reverse;
+  }
+}
+
+body #portal-logo {
+  margin-top: 0;
+}
+
+/* Search box adjustments */
+
+body #portal-searchbox [type="text"] {
+  background-color: rgba(255, 255, 255, 0.85);
+  @include media-breakpoint-up($nav-main-breakpoint) {
+    width: 12rem;
+  }
+}
+
+body #portal-searchbox .searchSection #searchbox_currentfolder_only,
+body #portal-searchbox .searchSection .form-check-label,
+{
+  display: none;
+}
+
+body #portal-searchbox {
+  @include media-breakpoint-down($nav-main-breakpoint) {
+    margin-left: 4.2rem;
+    margin-bottom: -2.87rem;
+  }
+}
+
+body header#content-header .livesearch-results {
+  color: $body-color;
+}
+
+/* Search box adjustments end */
+
+/* Lead image */
+
+body #section-leadimage figure {
+  @include media-breakpoint-up($nav-main-breakpoint) {
+    text-align: center;
+  }
+}
+
+body #section-leadimage figure > img.img-wide,
+body #section-leadimage figure > img.img-wide, {
+  @include media-breakpoint-up($nav-main-breakpoint) {
+    max-width: 70%
+  }
+}
+
+body #section-leadimage figure > img.img-squarish,
+body #section-leadimage figure > img.img-squarish, {
+  @include media-breakpoint-up($nav-main-breakpoint) {
+    max-height: 12rem;
+    width: auto;
+  }
+}
+
+body #section-leadimage figure > img.img-tall,
+body #section-leadimage figure > img.img-tall, {
+  @include media-breakpoint-up($nav-main-breakpoint) {
+    max-height: 12rem;
+    width: auto;
+  }
+}
+
+/* Lead image adjustments end */
+
+body #edit-zone .plone-toolbar-logo {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* TinyMCE templates */
+
+// image-grid-2x2:
+.image-grid-2x2 {
+    padding: 0;
+    margin: 0 0 $grid-gutter-width 0;
+    list-style: none;
+    @include make-row();
+
+    > li {
+        @include make-col(12);
+        @include make-col(6);
+        margin-top: $grid-gutter-width
+
+        img {
+            max-width: 100%;
+            max-height: 100%;
+        }
+    }
+}
+
+/* This style allows images / videos to scale 100% width / height. */
+.scaleimage, .autoscale,
+.portaltype-picture #content-core img,
+.portaltype-Picture #content-core img, {
+  width: 100%;
+  height: 100%;
+}
+
+/* Do not scale in edit forms. */
+.portaltype-picture #content-core form img,
+.portaltype-Picture #content-core form img, {
+  width: auto;
+  height: auto;
+}
+
+/* By default, images inside article figures get the 100% treatment. */
+figure img {
+  width: 100%;
+  height: 100%;
+}
+
+/* Captions of article figures are centered and grey. */
+figure figcaption {
+  text-align: center;
+  color: #767676;
+}
+
+/* Reduce prominence of contents listing on view templates of common portal types. */
+.template-view.portaltype-picture .contentsListing,
+.template-view.portaltype-document .contentsListing,
+.template-newsitem_view.portaltype-news-item .contentsListing,
+ {
+  font-size: 75%;
+}
+
+/* Avoid pictures stacking up in listings. */
+.template-listing_view #content-core .entries article {
+  clear: both;
+}
+
+/* Icon for content type Picture defined in ruddocom.policy. */
+//body#visual-portal-wrapper.pat-plone .outer-wrapper {
+	//.contenttype-picture:before {		content: '\e810';}
+	//.contenttype-Picture:before {		content: '\e810';}
+//}
+
+/* Reduce weird distance between first two footer portlets. */
+#portal-footer .doormat p {
+	margin-bottom: 0;
+}
+
+/* Hide title and byline in front page. */
+.section-everything header h1,
+.section-everything header div#viewlet-below-content-title, {
+  display: None;
+}
+
+/* Hide byline in collection page. */
+.portaltype-collection.template-listing_view header div#viewlet-below-content-title, {
+  display: None;
+}
+
+/* Article asides. */
+#tinymce aside, #content-core aside {
+  display: block;
+  font-style: italic;
+  margin-left: 1em;
+  margin-right: 1em;
+  //@media (min-width: $grid-float-breakpoint) {
+    //margin-left: 3em;
+    //margin-right: 3em;
+  //}
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: var(--bs-secondary);
+}
+
+/* Debug toolbar */
+
+body #debug-toolbar-trigger {
+  color: white;
+}
+

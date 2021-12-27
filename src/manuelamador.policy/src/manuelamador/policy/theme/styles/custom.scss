@@ -1,0 +1,158 @@
+/* our custom styles */
+
+/* Hide title and byline in front page. */
+.section-everything header h1,
+.section-everything header div#viewlet-below-content-title, {
+  display: None;
+}
+
+/* Hide byline in collection page. */
+.portaltype-collection.template-listing_view header div#viewlet-below-content-title, {
+  display: None;
+}
+
+/* Fonts */
+
+@font-face {
+  font-family: "Arimo";
+  src: url("Arimo-Regular.woff");
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Arimo";
+  src: url("Arimo-MediumItalic.woff");
+  font-style: italic;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: "Arimo";
+  src: url("Arimo-Bold.woff");
+  font-style: normal;
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: "Arimo";
+  src: url("Arimo-BoldItalic.woff");
+  font-style: italic;
+  font-weight: bold;
+}
+
+/* Fonts end */
+
+/* Logo adjustments */
+
+body #portal-header {
+  @include media-breakpoint-down($nav-main-breakpoint) {
+    margin-bottom: 0;
+  }
+}
+
+body #portal-header #portal-logo {
+  margin-top: 0;
+  @include media-breakpoint-down($nav-main-breakpoint) {
+    flex-grow: 0;
+    margin-left: auto;
+    margin-right: auto;
+    width: auto;
+  }
+}
+
+/* Logo adjustments end */
+
+
+/* Search box adjustments */
+
+body #portal-searchbox {
+  @include media-breakpoint-up($nav-main-breakpoint) {
+    margin-top: 0;
+  }
+}
+
+body #portal-searchbox [type="text"] {
+  @include media-breakpoint-up($nav-main-breakpoint) {
+    width: 7rem;
+  }
+}
+
+body #portal-searchbox .searchSection #searchbox_currentfolder_only,
+body #portal-searchbox .searchSection .form-check-label,
+{
+  display: none;
+}
+
+body #portal-searchbox form.pat-livesearch {
+  min-width: 0;
+}
+
+/* Search box adjustments end */
+
+@media print {
+  // https://www.sitepoint.com/css-printer-friendly-pages/
+
+  #section-byline, nav.autotoc-nav, #section-document-actions, #section-category {
+    display: None;
+  }
+  body {
+    font-size: 80%;
+    margin: 0;
+  }
+  body > .outer-wrapper > .container {
+    // Make the entire site as wide as the page.
+    max-width: 100%;
+  }
+  body > #edit-bar {
+    display: none;
+  }
+  @page {
+    margin-left: 1.8cm;
+    margin-right: 1.8cm;
+    margin-top: 2.5cm;
+    margin-bottom: 1.8cm;
+  }
+  @page :footer {
+    display: none
+  }
+  @page :header {
+    display: none
+  }
+  article > header, article > header > .lead {
+    margin-bottom: 1rem;
+  }
+}
+
+.onlyprint {
+  display: none;
+}
+
+@media print {
+  .onlyprint {
+    display: block;
+  }
+  .noprint {
+    display: none;
+  }
+  tr.onlyprint {
+    display: table-row;
+  }
+}
+
+#content-core div.contact-info {
+  margin-bottom: 1rem;
+}
+#content-core table.contact-info td {
+  padding: 0.25rem;
+}
+@media print {
+  #content-core div.contact-info {
+    float: right;
+    border-left: 1px solid black;
+    padding-left: 0.5cm;
+    margin-left: 0.5cm;
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+  }
+}

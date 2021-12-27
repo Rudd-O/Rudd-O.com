@@ -1,0 +1,55 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="manuelamador.policy">
+
+  <i18n:registerTranslations directory="locales" />
+
+  <include package=".browser" />
+
+  <include file="permissions.zcml" />
+
+  <genericsetup:registerProfile
+      name="default"
+      title="manuelamador.name policy"
+      directory="profiles/default"
+      description="Installs the manuelamador.policy add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      post_handler=".setuphandlers.post_install"
+      />
+
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="manuelamador.name policy (uninstall)"
+      directory="profiles/uninstall"
+      description="Uninstalls the manuelamador.policy add-on."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      post_handler=".setuphandlers.uninstall"
+      />
+
+  <genericsetup:upgradeStep
+      title="Hide portlets"
+      description="Portlets: hide"
+      source="*"
+      destination="1015"
+      handler=".setuphandlers.hide_colophon_and_footer"
+      profile="manuelamador.policy:default"
+      />
+
+  <utility
+      factory=".setuphandlers.HiddenProfiles"
+      name="manuelamador.policy-hiddenprofiles"
+      />
+
+  <!-- -*- extra stuff goes here -*- -->
+
+  <plone:static
+      directory="theme"
+      type="theme"
+      name="manuelamador.name"
+      />
+
+
+</configure>

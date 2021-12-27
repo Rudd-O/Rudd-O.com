@@ -1,0 +1,21 @@
+//// VARIABLES
+// ... add your variables here
+
+$enable-roboto-webfont: false;
+$roboto-base-path: "../../../++theme++barceloneta/roboto/";
+$font-family-sans-serif: "Liera Sans", "Helvetica Neue", Helvetica, Arial, sans-serif!default;
+
+$primary: #680904;
+$footer-bg: #f4f4f4;
+$footer-color: #333333;
+
+
+//// IMPORTS
+// Import barceloneta files from node_modules --load-path=node_modules
+@import "@plone/plonetheme-barceloneta-base/scss/barceloneta.scss";
+
+
+//// STYLES
+// ... add your styles here
+
+@import "custom.scss";

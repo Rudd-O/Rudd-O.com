@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<registry>
+  <records interface="Products.CMFPlone.interfaces.controlpanel.IMailSchema" prefix="plone">
+    <value key="email_charset">utf-8</value>
+    <value key="email_from_address">webmaster@rudd-o.com</value>
+    <value key="email_from_name">Webmaster at Rudd-O.com</value>
+    <value key="smtp_host">mail.rudd-o.com</value>
+    <value key="smtp_port">587</value>
+    <value key="smtp_userid">lucy</value>
+  </records>
+</registry>

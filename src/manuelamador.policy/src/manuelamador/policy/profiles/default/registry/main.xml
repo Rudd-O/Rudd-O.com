@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<registry
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="ruddocom.policy">
+
+  <records interface="Products.CMFPlone.interfaces.controlpanel.ISiteSchema" prefix="plone">
+    <value key="site_title">Manuel Amador</value>
+  </records>
+
+</registry>

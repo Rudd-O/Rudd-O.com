@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<registry
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="ruddocom.policy">
+
+  <record name="plone.use_cookie_negotiation" interface="plone.app.multilingual.interfaces.IMultiLanguageExtraOptionsSchema" field="use_cookie_negotiation">
+    <value>False</value>
+  </record>
+  <record name="plone.use_path_negotiation" interface="plone.app.multilingual.interfaces.IMultiLanguageExtraOptionsSchema" field="use_path_negotiation">
+    <value>True</value>
+  </record>
+
+  <records interface="Products.CMFPlone.interfaces.controlpanel.ISiteSchema" prefix="plone">
+    <value key="site_title">Rudd-O.com</value>
+    <value key="display_publication_date_in_byline">True</value>
+    <value key="enable_sitemap">True</value>
+    <value key="exposeDCMetaTags">True</value>
+    <value key="webstats_js">&lt;!-- Global site tag (gtag.js) - Google Analytics --&gt;&#13;
+&lt;!-- disabled&#13;
+&lt;script async src="https://www.googletagmanager.com/gtag/js?id=UA-1203268-1"&gt;&lt;/script&gt;&#13;
+&lt;script&gt;&#13;
+  window.dataLayer = window.dataLayer || [];&#13;
+  function gtag(){dataLayer.push(arguments);}&#13;
+  gtag('js', new Date());&#13;
+&#13;
+  gtag('config', 'UA-1203268-1');&#13;
+&lt;/script&gt;&#13;
+--&gt;</value>
+  </records>
+
+</registry>

@@ -1,0 +1,5 @@
+===============
+manuelamador.policy
+===============
+
+User documentation

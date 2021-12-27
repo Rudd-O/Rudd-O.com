@@ -2,26 +2,23 @@
 # Directory common to all deployments.
 deployment-basedir = {{ deployments_basedir }}
 
+# Place where this deployment keeps its files.
+deployment-dir = {{ deployment_target_dir }}
+
 # Place where this deployment keeps its data.
 data-dir = {{ deployment_data_dir }}
 
 extends = 
     base.cfg
-    https://dist.plone.org/release/{{ item.value.version }}/versions.cfg
-    versions.cfg
 
 # If you change your Plone version, you'll also need to update
 # the repository below.
-find-links +=
-    https://dist.plone.org/release/{{ item.value.version }}/
 
 zeo-address = ${buildout:data-dir}/var/zeosocket
 # Zope client 1
 http-address = {{ item.value.zserver_address }}
 webdav-address = {{ item.value.webdav_address }}
 webdav-source-port = {{ item.value.webdav_address.split(":")[1] }}
-# Additional clients:
-debugger-address = {{ item.value.debugger_address }}
 
 zserver-threads = {{ item.value.threads }}
 

@@ -1,0 +1,4 @@
+#!/bin/bash
+DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+cd "$DIR"
+kwrite  src/ruddocom/policy/configure.zcml src/ruddocom/policy/profiles/default/metadata.xml setup.py src/ruddocom/policy/setuphandlers.py
