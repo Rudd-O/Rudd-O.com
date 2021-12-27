@@ -1,4 +1,5 @@
-HASH := $(shell ./build/hash)
+ROOT_DIR := $(shell dirname $(realpath $(firstword $(MAKEFILE_LIST))))
+HASH := $(shell cd $(ROOT_DIR) && ./build/hash)
 .PHONY = all build autobuild-ruddocom autobuild-manuelamador
 
 
@@ -9,13 +10,13 @@ all: \
 .cachebust/$(HASH): \
   Makefile \
   build/hash
-	rm -rf .cachebust
-	mkdir -p .cachebust
-	touch .cachebust/$(HASH)
 	sed -i "s|[+][+]unique[+][+][a-z0-9]*/|++unique++$(HASH)/|" src/ruddocom.policy/src/ruddocom/policy/theme/manifest.cfg
 	sed -i "s|[+][+]unique[+][+][a-z0-9]*/|++unique++$(HASH)/|" src/ruddocom.policy/src/ruddocom/policy/theme/index.html
 	sed -i "s|[+][+]unique[+][+][a-z0-9]*/|++unique++$(HASH)/|" src/manuelamador.policy/src/manuelamador/policy/theme/manifest.cfg
 	sed -i "s|[+][+]unique[+][+][a-z0-9]*/|++unique++$(HASH)/|" src/manuelamador.policy/src/manuelamador/policy/theme/index.html
+	rm -rf .cachebust
+	mkdir -p .cachebust
+	touch .cachebust/$(HASH)
 
 build: \
   Makefile \
