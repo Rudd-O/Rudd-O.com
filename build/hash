@@ -2,6 +2,18 @@
 
 set -e
 set -o pipefail
-hash=$(find src/*/src/*/policy/theme -type f | sort | tr '\n' '\0' | xargs -0 cat | (grep -av '..unique..' || true) | md5sum - | awk ' { print $1 } ')
+hash=$( \
+  find src/*/src/*/policy/theme -type f | \
+  sort | \
+  grep -v /theme.min.css$ | \
+  grep -v /theme.css$ | \
+  grep -v /theme.min.css.map$ | \
+  grep -v /theme.css.map$ | \
+  tr '\n' '\0' | \
+  xargs -0 cat | \
+  (grep -av '..unique..' || true) | \
+  md5sum - | \
+  awk ' { print $1 } ' \
+)
 
 echo "$hash"
