@@ -5,6 +5,7 @@
 
   <records interface="Products.CMFPlone.interfaces.controlpanel.ISiteSchema" prefix="plone">
     <value key="site_title">Manuel Amador</value>
+    <value key="enable_sitemap">True</value>
   </records>
 
 </registry>
