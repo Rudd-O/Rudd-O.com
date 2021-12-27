@@ -1,24 +1,44 @@
 GITREV := $(shell git rev-parse HEAD)
-.PHONY = cachebust build autobuild-ruddocom autobuild-manuelamador
+HASH := $(shell ./build/hash)
+.PHONY = all build autobuild-ruddocom autobuild-manuelamador
 
 
+all: \
+  build \
+  .cachebust/$(HASH)
 
-build:
-	cd src/manuelamador.policy/src/manuelamador/policy/theme && npm run build
-	cd src/ruddocom.policy/src/ruddocom/policy/theme && npm run build
-
-cachebust:
-	# lines=$$(git status --porcelain | grep -v '[?][?]' | wc -l) ; if [ "$$lines" != "0" ] ; then echo Directory dirty, not busting >&2 ; exit 1 ; fi
+.cachebust/$(HASH):
+	mkdir -p .cachebust
+	touch .cachebust/$(HASH)
 	sed -i "s|[+][+]unique[+][+][a-z0-9]*/|++unique++$(GITREV)/|" src/ruddocom.policy/src/ruddocom/policy/theme/manifest.cfg
 	sed -i "s|[+][+]unique[+][+][a-z0-9]*/|++unique++$(GITREV)/|" src/ruddocom.policy/src/ruddocom/policy/theme/index.html
 	sed -i "s|[+][+]unique[+][+][a-z0-9]*/|++unique++$(GITREV)/|" src/manuelamador.policy/src/manuelamador/policy/theme/manifest.cfg
 	sed -i "s|[+][+]unique[+][+][a-z0-9]*/|++unique++$(GITREV)/|" src/manuelamador.policy/src/manuelamador/policy/theme/index.html
-	#git add -p
-	#git commit -a
+
+build: \
+  src/ruddocom.policy/src/ruddocom/policy/theme/styles/theme.min.css \
+  src/manuelamador.policy/src/manuelamador/policy/theme/styles/theme.min.css
+
+src/ruddocom.policy/src/ruddocom/policy/theme/node_modules/@plone/plonetheme-barceloneta-base/package.json:
+	cd src/ruddocom.policy/src/ruddocom/policy/theme && npm install
+
+src/manuelamador.policy/src/manuelamador/policy/theme/node_modules/@plone/plonetheme-barceloneta-base/package.json:
+	cd src/manuelamador.policy/src/manuelamador/policy/theme && npm install
+
+src/ruddocom.policy/src/ruddocom/policy/theme/styles/theme.min.css: \
+  src/ruddocom.policy/src/ruddocom/policy/theme/styles/theme.scss \
+  src/ruddocom.policy/src/ruddocom/policy/theme/styles/custom.scss \
+  src/ruddocom.policy/src/ruddocom/policy/theme/node_modules/@plone/plonetheme-barceloneta-base/package.json
+	cd src/ruddocom.policy/src/ruddocom/policy/theme && npm run build
+
+src/manuelamador.policy/src/manuelamador/policy/theme/styles/theme.min.css: \
+  src/manuelamador.policy/src/manuelamador/policy/theme/styles/theme.scss \
+  src/manuelamador.policy/src/manuelamador/policy/theme/styles/custom.scss \
+  src/manuelamador.policy/src/manuelamador/policy/theme/node_modules/@plone/plonetheme-barceloneta-base/package.json
+	cd src/manuelamador.policy/src/manuelamador/policy/theme && npm run build
 
 autobuild-ruddocom:
 	cd src/ruddocom.policy/src/ruddocom/policy/theme/styles && npm run watch
-
 	
 autobuild-manuelamador:
 	cd src/manuelamador.policy/src/manuelamador/policy/theme/styles && npm run watch

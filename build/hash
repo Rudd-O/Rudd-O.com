@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -e
+set -o pipefail
+hash=$(find src/*/src/*/policy/theme -type f | sort | tr '\n' '\0' | xargs -0 cat | sed 's/..unique..[a-z0-9]*//' | md5sum - | cut -d '-' -f 1)
+
+echo "$hash"

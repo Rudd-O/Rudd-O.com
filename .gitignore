@@ -9,3 +9,4 @@ parts
 .installed.cfg
 .settings
 var
+.cachebust
