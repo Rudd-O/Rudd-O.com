@@ -201,6 +201,11 @@ figure figcaption {
 	margin-bottom: 0;
 }
 
+/* Prevent wrap in site actions at the bottom */
+.site-actions .portletItem span {
+  white-space: nowrap;
+}
+
 /* Hide title and byline in front page. */
 .section-everything header h1,
 .section-everything header div#viewlet-below-content-title, {

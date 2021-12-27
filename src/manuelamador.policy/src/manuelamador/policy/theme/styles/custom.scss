@@ -156,3 +156,13 @@ body #portal-searchbox form.pat-livesearch {
     padding-top: 0.5rem;
   }
 }
+
+/* Footer */
+
+/* Prevent wrap in site actions at the bottom */
+.site-actions .portletItem span {
+  white-space: nowrap;
+}
+
+/* Footer end */
+
