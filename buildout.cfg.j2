@@ -11,7 +11,7 @@ data-dir = {{ deployment_data_dir }}
 extends = 
     base.cfg
 
-debug-eggs = {% if item.value.debug_mode %}plone.reload
+debug-eggs = {% if item.value.debug_mode == "on" %}plone.reload
   plone.app.debugtoolbar
 {%- endif %}
 
