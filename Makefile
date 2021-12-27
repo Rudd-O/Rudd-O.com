@@ -1,4 +1,3 @@
-GITREV := $(shell git rev-parse HEAD)
 HASH := $(shell ./build/hash)
 .PHONY = all build autobuild-ruddocom autobuild-manuelamador
 
@@ -10,10 +9,10 @@ all: \
 .cachebust/$(HASH):
 	mkdir -p .cachebust
 	touch .cachebust/$(HASH)
-	sed -i "s|[+][+]unique[+][+][a-z0-9]*/|++unique++$(GITREV)/|" src/ruddocom.policy/src/ruddocom/policy/theme/manifest.cfg
-	sed -i "s|[+][+]unique[+][+][a-z0-9]*/|++unique++$(GITREV)/|" src/ruddocom.policy/src/ruddocom/policy/theme/index.html
-	sed -i "s|[+][+]unique[+][+][a-z0-9]*/|++unique++$(GITREV)/|" src/manuelamador.policy/src/manuelamador/policy/theme/manifest.cfg
-	sed -i "s|[+][+]unique[+][+][a-z0-9]*/|++unique++$(GITREV)/|" src/manuelamador.policy/src/manuelamador/policy/theme/index.html
+	sed -i "s|[+][+]unique[+][+][a-z0-9]*/|++unique++$(HASH)/|" src/ruddocom.policy/src/ruddocom/policy/theme/manifest.cfg
+	sed -i "s|[+][+]unique[+][+][a-z0-9]*/|++unique++$(HASH)/|" src/ruddocom.policy/src/ruddocom/policy/theme/index.html
+	sed -i "s|[+][+]unique[+][+][a-z0-9]*/|++unique++$(HASH)/|" src/manuelamador.policy/src/manuelamador/policy/theme/manifest.cfg
+	sed -i "s|[+][+]unique[+][+][a-z0-9]*/|++unique++$(HASH)/|" src/manuelamador.policy/src/manuelamador/policy/theme/index.html
 
 build: \
   src/ruddocom.policy/src/ruddocom/policy/theme/styles/theme.min.css \
