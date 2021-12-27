@@ -6,7 +6,10 @@ all: \
   build \
   .cachebust/$(HASH)
 
-.cachebust/$(HASH):
+.cachebust/$(HASH): \
+  Makefile \
+  build/hash
+	rm -rf .cachebust
 	mkdir -p .cachebust
 	touch .cachebust/$(HASH)
 	sed -i "s|[+][+]unique[+][+][a-z0-9]*/|++unique++$(HASH)/|" src/ruddocom.policy/src/ruddocom/policy/theme/manifest.cfg
@@ -15,6 +18,7 @@ all: \
 	sed -i "s|[+][+]unique[+][+][a-z0-9]*/|++unique++$(HASH)/|" src/manuelamador.policy/src/manuelamador/policy/theme/index.html
 
 build: \
+  Makefile \
   src/ruddocom.policy/src/ruddocom/policy/theme/styles/theme.min.css \
   src/manuelamador.policy/src/manuelamador/policy/theme/styles/theme.min.css
 
