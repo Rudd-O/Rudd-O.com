@@ -11,6 +11,10 @@ data-dir = {{ deployment_data_dir }}
 extends = 
     base.cfg
 
+debug-eggs = {% if item.value.debug_mode %}plone.reload
+  plone.app.debugtoolbar
+{%- endif %}
+
 # If you change your Plone version, you'll also need to update
 # the repository below.
 
