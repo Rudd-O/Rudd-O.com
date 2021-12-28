@@ -5,25 +5,25 @@ HASH_MANUELAMADOR := $(shell cd $(ROOT_DIR) && ./build/hash manuelamador.policy)
 
 
 all: \
-  .cachebust/manuelamador/$(HASH) \
-  .cachebust/ruddocom/$(HASH) \
+  .cachebust/manuelamador/$(HASH_MANUELAMADOR) \
+  .cachebust/ruddocom/$(HASH_RUDDOCOM) \
 
-.cachebust/manuelamador/$(HASH): \
+.cachebust/manuelamador/$(HASH_MANUELAMADOR): \
   Makefile \
   build/hash \
   src/manuelamador.policy/src/manuelamador/policy/theme/styles/theme.min.css
-	sed -i "s|[+][+]unique[+][+][a-z0-9]*/|++unique++$(HASH)/|" src/manuelamador.policy/src/manuelamador/policy/theme/manifest.cfg
-	sed -i "s|[+][+]unique[+][+][a-z0-9]*/|++unique++$(HASH)/|" src/manuelamador.policy/src/manuelamador/policy/theme/index.html
+	sed -i "s|[+][+]unique[+][+][a-z0-9]*/|++unique++"$(HASH_MANUELAMADOR)/"|" src/manuelamador.policy/src/manuelamador/policy/theme/manifest.cfg
+	sed -i "s|[+][+]unique[+][+][a-z0-9]*/|++unique++"$(HASH_MANUELAMADOR)/"|" src/manuelamador.policy/src/manuelamador/policy/theme/index.html
 	rm -rf .cachebust/manuelamador
 	mkdir -p .cachebust/manuelamador
 	touch .cachebust/manuelamador/$(HASH_MANUELAMADOR)
 
-.cachebust/ruddocom/$(HASH): \
+.cachebust/ruddocom/$(HASH_RUDDOCOM): \
   Makefile \
   build/hash \
   src/ruddocom.policy/src/ruddocom/policy/theme/styles/theme.min.css
-	sed -i "s|[+][+]unique[+][+][a-z0-9]*/|++unique++$(HASH)/|" src/ruddocom.policy/src/ruddocom/policy/theme/manifest.cfg
-	sed -i "s|[+][+]unique[+][+][a-z0-9]*/|++unique++$(HASH)/|" src/ruddocom.policy/src/ruddocom/policy/theme/index.html
+	sed -i "s|[+][+]unique[+][+][a-z0-9]*/|++unique++"$(HASH_RUDDOCOM)/"|" src/ruddocom.policy/src/ruddocom/policy/theme/manifest.cfg
+	sed -i "s|[+][+]unique[+][+][a-z0-9]*/|++unique++"$(HASH_RUDDOCOM)/"|" src/ruddocom.policy/src/ruddocom/policy/theme/index.html
 	rm -rf .cachebust/ruddocom
 	mkdir -p .cachebust/ruddocom
 	touch .cachebust/ruddocom/$(HASH_RUDDOCOM)
