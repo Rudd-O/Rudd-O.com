@@ -153,11 +153,10 @@ body #edit-zone .plone-toolbar-logo {
 }
 
 /* This style allows images / videos to scale 100% width / height. */
-.scaleimage, .autoscale,
+.scaleimage, .autoscale, .image-responsive,
 .portaltype-picture #content-core img,
 .portaltype-Picture #content-core img, {
-  width: 100%;
-  height: 100%;
+  @include img-fluid;
 }
 
 /* Do not scale in edit forms. */
