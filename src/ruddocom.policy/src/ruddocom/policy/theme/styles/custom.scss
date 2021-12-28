@@ -141,7 +141,7 @@ body #edit-zone .plone-toolbar-logo {
     > li {
         @include make-col(12);
         @include make-col(6);
-        margin-top: $grid-gutter-width
+        margin-top: $grid-gutter-width;
 
         img {
             max-width: 100%;
