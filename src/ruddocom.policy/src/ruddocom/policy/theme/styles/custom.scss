@@ -152,25 +152,31 @@ body #edit-zone .plone-toolbar-logo {
     }
 }
 
-/* This style allows images / videos to scale 100% width / height. */
+/* This style allows images / videos / Pictures to scale 100% width / height. */
 .scaleimage,
 video.autoscale, video.image-responsive,
-audio.autoscale, audio.image-responsive,
-img.autoscale, img.image-responsive,
-.portaltype-picture #content-core img,
-.portaltype-Picture #content-core img, {
-  @include img-fluid;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+audio.autoscale, audio.image-responsive, {
+  height: auto;
+  width: 100%;
 }
-
 /* This style allows iframes (typically embeds) to scale down. */
 iframe.autoscale {
   display: block;
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
+}
+img.autoscale, img.image-responsive, {
+  height: auto;
+  max-width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.portaltype-picture #content-core img,
+.portaltype-Picture #content-core img, {
+  height: auto;
+  max-width: 100%;
 }
 
 /* Do not scale in edit forms. */
