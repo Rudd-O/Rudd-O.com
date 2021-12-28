@@ -139,8 +139,10 @@ body #edit-zone .plone-toolbar-logo {
     @include make-row();
 
     > li {
-        @include make-col(12);
-        @include make-col(6);
+        @include media-breakpoint-up($nav-main-breakpoint) {
+          @include make-col(12);
+          @include make-col(6);
+        }
         margin-top: $grid-gutter-width;
 
         img {
