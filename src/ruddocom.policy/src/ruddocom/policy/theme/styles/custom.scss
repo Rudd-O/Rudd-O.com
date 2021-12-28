@@ -157,6 +157,9 @@ body #edit-zone .plone-toolbar-logo {
 .portaltype-picture #content-core img,
 .portaltype-Picture #content-core img, {
   @include img-fluid;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* Do not scale in edit forms. */
@@ -169,7 +172,7 @@ body #edit-zone .plone-toolbar-logo {
 /* By default, images inside article figures get the 100% treatment. */
 figure img {
   width: 100%;
-  height: 100%;
+  height: auto;
 }
 
 /* Captions of article figures are centered and grey. */
