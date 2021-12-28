@@ -194,6 +194,7 @@ img.autoscale, img.image-responsive, {
 figure img {
   width: 100%;
   height: auto;
+  max-height: 95vh;
 }
 
 /* Captions of article figures are centered and grey. */
