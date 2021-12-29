@@ -25,6 +25,15 @@
       template="templates/picture.pt"
       />
 
+  <!-- RSS with summaries rather than full content -->
+  <browser:page
+    for="Products.CMFPlone.interfaces.syndication.ISyndicatable"
+    class="Products.CMFPlone.browser.syndication.views.FeedView"
+    name="RSS.summarized"
+    permission="zope2.View"
+    template="templates/RSS.summarized.pt"
+    />
+
   <!-- add my own viewlet for lead image -->
   <browser:viewlet
     name="contentleadimage-abovetitle"
