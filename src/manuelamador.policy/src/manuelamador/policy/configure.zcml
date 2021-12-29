@@ -3,6 +3,7 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     xmlns:i18n="http://namespaces.zope.org/i18n"
     xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:cmf="http://namespaces.zope.org/cmf"
     i18n_domain="manuelamador.policy">
 
   <i18n:registerTranslations directory="locales" />
@@ -10,6 +11,13 @@
   <include package=".browser" />
 
   <include file="permissions.zcml" />
+
+  <!-- We use this to override /favicon.ico -->
+  <cmf:registerDirectory
+      name="skins"
+      directory="skins"
+      recursive="True"
+      />
 
   <genericsetup:registerProfile
       name="default"
@@ -35,6 +43,15 @@
       source="*"
       destination="1015"
       handler=".setuphandlers.hide_colophon_and_footer"
+      profile="manuelamador.policy:default"
+      />
+
+  <genericsetup:upgradeDepends
+      title="Setup favicon skin"
+      description="Skins: add skin for raw favicon"
+      source="*"
+      destination="1016"
+      import_steps="skins"
       profile="manuelamador.policy:default"
       />
 

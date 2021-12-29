@@ -3,6 +3,7 @@
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
     xmlns:i18n="http://namespaces.zope.org/i18n"
     xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:cmf="http://namespaces.zope.org/cmf"
     i18n_domain="ruddocom.policy">
 
   <i18n:registerTranslations directory="locales" />
@@ -11,6 +12,13 @@
   <include package=".content" />
 
   <include file="permissions.zcml" />
+
+  <!-- We use this to override /favicon.ico -->
+  <cmf:registerDirectory
+      name="skins"
+      directory="skins"
+      recursive="True"
+      />
 
   <genericsetup:registerProfile
       name="default"
@@ -153,6 +161,15 @@
       source="*"
       destination="1015"
       import_steps="plone.app.registry"
+      profile="ruddocom.policy:default"
+      />
+
+  <genericsetup:upgradeDepends
+      title="Setup favicon skin"
+      description="Skins: add skin for raw favicon"
+      source="*"
+      destination="1016"
+      import_steps="skins"
       profile="ruddocom.policy:default"
       />
 
