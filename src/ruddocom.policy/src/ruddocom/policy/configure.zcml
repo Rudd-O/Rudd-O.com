@@ -173,6 +173,15 @@
       profile="ruddocom.policy:default"
       />
 
+  <genericsetup:upgradeDepends
+      title="Enable PDF IFRAMEr"
+      description="Dependency: ruddocom.pdfiframer"
+      source="*"
+      destination="1017"
+      profile="ruddocom.policy:default"
+      import_profile="ruddocom.pdfiframer:default"
+      />
+
   <genericsetup:registerProfile
       name="uninstall"
       title="Rudd-O.com policy (uninstall)"

@@ -61,6 +61,7 @@ setup(
         'collective.exportimport',
         'collective.folderishtypes[dexterity]',
         'collective.searchandreplace',
+        'ruddocom.pdfiframer',
     ],
     extras_require={
         'test': [

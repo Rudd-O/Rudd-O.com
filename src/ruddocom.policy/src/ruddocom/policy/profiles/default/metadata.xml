@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <metadata>
-  <version>1016</version>
+  <version>1017</version>
   <dependencies>
     <!--<dependency>profile-plone.app.dexterity:default</dependency>-->
     <dependency>profile-plone.app.dexterity:default</dependency>
@@ -9,5 +9,6 @@
     <dependency>profile-collective.folderishtypes.dx:default</dependency>
     <dependency>profile-collective.searchandreplace:default</dependency>
     <dependency>profile-plone.app.theming:default</dependency>
+    <dependency>profile-ruddocom.pdfiframer:default</dependency>
   </dependencies>
 </metadata>
