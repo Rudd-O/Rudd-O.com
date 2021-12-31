@@ -190,6 +190,11 @@ img.autoscale, img.image-responsive, {
   height: auto;
 }
 
+/* Center content of figures. */
+figure {
+  text-align: center;
+}
+
 /* By default, images inside article figures get the 100% treatment. */
 figure.autoscale img,
 figure img.autoscale {
