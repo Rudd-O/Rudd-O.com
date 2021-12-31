@@ -191,10 +191,18 @@ img.autoscale, img.image-responsive, {
 }
 
 /* By default, images inside article figures get the 100% treatment. */
-figure img {
+figure.autoscale img,
+figure img.autoscale {
   width: 100%;
   height: auto;
   max-height: 95vh;
+}
+
+figure.inset-right {
+  text-align: center;
+  float: right;
+  padding: 0.5rem;
+  padding-right: 0rem;
 }
 
 /* Captions of article figures are centered and grey. */
