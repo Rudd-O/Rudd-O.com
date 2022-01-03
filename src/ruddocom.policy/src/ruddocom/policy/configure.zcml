@@ -191,6 +191,15 @@
       profile="ruddocom.policy:default"
       />
 
+  <genericsetup:upgradeDepends
+      title="Disable context menu in editor (mobile sucks)"
+      description="TinyMCE: disable context menu"
+      source="*"
+      destination="1019"
+      import_steps="plone.app.registry"
+      profile="ruddocom.policy:default"
+      />
+
   <genericsetup:registerProfile
       name="uninstall"
       title="Rudd-O.com policy (uninstall)"
