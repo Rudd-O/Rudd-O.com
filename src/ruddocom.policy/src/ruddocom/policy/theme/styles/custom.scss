@@ -289,3 +289,13 @@ body #debug-toolbar-trigger {
 }
 
 /* Navbar bottom end */
+
+/* Block quotes */
+
+body blockquote,
+#tinymce body blockquote, {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+/* Block quotes end */
