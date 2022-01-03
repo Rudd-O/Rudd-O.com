@@ -32,6 +32,12 @@
    </property>
   </object>
  </object>
+ <!-- modal login dialog should have auto (max-) width, not fixed width -->
+ <object name="user" meta_type="CMF Action Category">
+  <object name="login" meta_type="CMF Action" i18n:domain="plone">
+   <property name="modal" type="text">{"title": "Log in", "max-width": "26em", "actionOptions": {"redirectOnResponse": true}}</property>
+  </object>
+ </object>
  <!-- hide Home tab -->
  <object name="portal_tabs" meta_type="CMF Action Category">
   <object name="index_html" meta_type="CMF Action" i18n:domain="plone">
