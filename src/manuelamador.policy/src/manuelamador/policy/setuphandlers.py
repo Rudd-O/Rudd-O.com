@@ -11,7 +11,6 @@ from plone.portlets.interfaces import (
     IPortletAssignmentSettings,
 )
 from plone.portlets.interfaces import IPortletManager
-from zope.component import getUtility
 from zope.component import getUtility, getMultiAdapter
 from zope.interface import implementer
 
@@ -36,7 +35,7 @@ def post_install(context):
     logger("Post-install complete")
 
 
-def setup_cookies(context):
+def setup_cookies(unused_context):
     portal_url = api.portal.get_tool("portal_url")
     portal = portal_url.getPortalObject()
     l = portal.acl_users.session
@@ -46,7 +45,7 @@ def setup_cookies(context):
         # Session times out in 30 days.
         l.timeout = t
         changed = True
-    f = 0
+    f = 30
     if l.cookie_lifetime != f:
         # Cookie lasts forever.
         l.cookie_lifetime = f

@@ -1,19 +1,18 @@
 # -*- coding: utf-8 -*-
 import logging
 
-from plone import api
 from Acquisition import aq_inner
 from Products.CMFPlone.interfaces import INonInstallable
-from zope.interface import implementer
-from zope.component import getUtility
+from plone import api
 from plone.app.multilingual.browser.setup import SetupMultilingualSite
 from plone.app.redirector.interfaces import IRedirectionStorage
-from zope.component import getUtility, getMultiAdapter
-from plone.portlets.interfaces import IPortletManager
 from plone.portlets.interfaces import (
     IPortletAssignmentMapping,
     IPortletAssignmentSettings,
 )
+from plone.portlets.interfaces import IPortletManager
+from zope.component import getUtility, getMultiAdapter
+from zope.interface import implementer
 
 
 PROFILE = "ruddocom.policy:default"
@@ -40,7 +39,7 @@ def post_install(context):
     logger("Post-install complete")
 
 
-def setup_cookies(context):
+def setup_cookies(unused_context):
     portal_url = api.portal.get_tool("portal_url")
     portal = portal_url.getPortalObject()
     l = portal.acl_users.session
@@ -50,7 +49,7 @@ def setup_cookies(context):
         # Session times out in 30 days.
         l.timeout = t
         changed = True
-    f = 0
+    f = 30
     if l.cookie_lifetime != f:
         # Cookie lasts forever.
         l.cookie_lifetime = f
@@ -120,7 +119,6 @@ def add_redirect(source_path, target_path):
 
 
 def setup_language_folder_redirects(context=None):
-    portal = api.portal.get()
     for path, redirect in [
         ("/en/assets", "/en/uploads"),
         ("/es/recursos", "/es/uploads"),

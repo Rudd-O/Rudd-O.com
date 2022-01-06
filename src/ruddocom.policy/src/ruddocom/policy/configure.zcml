@@ -200,6 +200,15 @@
       profile="ruddocom.policy:default"
       />
 
+  <genericsetup:upgradeStep
+      title="Cookies persistent"
+      description="Cookies: 30 day lifetime"
+      source="*"
+      destination="1020"
+      handler=".setuphandlers.setup_cookies"
+      profile="ruddocom.policy:default"
+      />
+
   <genericsetup:registerProfile
       name="uninstall"
       title="Rudd-O.com policy (uninstall)"

@@ -55,6 +55,15 @@
       profile="manuelamador.policy:default"
       />
 
+  <genericsetup:upgradeStep
+      title="Cookies persistent"
+      description="Cookies: 30 day lifetime"
+      source="*"
+      destination="1017"
+      handler=".setuphandlers.setup_cookies"
+      profile="manuelamador.policy:default"
+      />
+
   <utility
       factory=".setuphandlers.HiddenProfiles"
       name="manuelamador.policy-hiddenprofiles"
