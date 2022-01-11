@@ -295,3 +295,41 @@ body blockquote,
 }
 
 /* Block quotes end */
+
+/* Tabs in portal content */
+
+#content-core .pat-autotoc > .autotoc-section {
+  @media screen {
+    border-bottom: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    padding-left: $spacer * 1.25;
+    padding-right: $spacer * 1.25;
+    margin-bottom: $spacer * 1.25;
+    padding-top: $spacer * 1.25;
+  }
+}
+
+#content-core .pat-autotoc > .autotoc-section {
+  @media print {
+    display: block;
+  }
+}
+
+#content-core .pat-autotoc > .autotoc-nav {
+  @media print {
+    display: none;
+  }
+}
+
+#content-core .pat-autotoc > .autotoc-section > :first-child {
+  @media screen {
+    display: none;
+  }
+}
+
+#content-core .pat-autotoc > .autotoc-nav {
+  margin-bottom: 0;
+}
+
+/* Tabs in portal content end */
