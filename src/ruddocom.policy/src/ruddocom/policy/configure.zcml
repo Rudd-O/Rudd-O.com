@@ -209,6 +209,15 @@
       profile="ruddocom.policy:default"
       />
 
+  <genericsetup:upgradeDepends
+      title="Plone pattern property attribute"
+      description="Registry: allow data-pat-autotoc attribute"
+      source="*"
+      destination="1021"
+      import_steps="plone.app.registry"
+      profile="ruddocom.policy:default"
+      />
+
   <genericsetup:registerProfile
       name="uninstall"
       title="Rudd-O.com policy (uninstall)"

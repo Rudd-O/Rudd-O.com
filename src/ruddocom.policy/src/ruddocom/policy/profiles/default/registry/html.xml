@@ -4,6 +4,7 @@
     <value key="custom_attributes">
       <element>style</element>
       <element>controls</element>
+      <element>data-pat-autotoc</element>
     </value>
     <value key="disable_filtering">False</value>
     <value key="nasty_tags">
