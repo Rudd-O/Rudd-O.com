@@ -333,3 +333,11 @@ body blockquote,
 }
 
 /* Tabs in portal content end */
+
+/* ONLYOFFICE */
+
+body.template-onlyoffice-edit #content-core > iframe {
+  min-height: 95vh;
+}
+
+/* ONLYOFFICE end */
