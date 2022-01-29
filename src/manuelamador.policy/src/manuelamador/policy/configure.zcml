@@ -12,13 +12,6 @@
 
   <include file="permissions.zcml" />
 
-  <!-- We use this to override /favicon.ico -->
-  <cmf:registerDirectory
-      name="skins"
-      directory="skins"
-      recursive="True"
-      />
-
   <genericsetup:registerProfile
       name="default"
       title="manuelamador.name policy"
@@ -61,6 +54,24 @@
       source="*"
       destination="1017"
       handler=".setuphandlers.setup_cookies"
+      profile="manuelamador.policy:default"
+      />
+
+  <genericsetup:upgradeDepends
+      title="Remove favicon skin"
+      description="Skins: remove skin for raw favicon because this is done in a new way in Plone 6"
+      source="*"
+      destination="1018"
+      import_steps="skins"
+      profile="manuelamador.policy:default"
+      />
+
+  <genericsetup:upgradeDepends
+      title="Favicon"
+      description="Registry: favicon"
+      source="*"
+      destination="1018"
+      import_steps="plone.app.registry"
       profile="manuelamador.policy:default"
       />
 
