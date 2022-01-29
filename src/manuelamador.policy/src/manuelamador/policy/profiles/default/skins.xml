@@ -2,6 +2,6 @@
 <object name="portal_skins" meta_type="Plone Skins Tool">
  <object name="plone_images_themed" meta_type="Filesystem Directory View" remove="true"/>
   <skin-path name="*">
-    <layer name="plone_images_themed" remove="true/>
+    <layer name="plone_images_themed" remove="true"/>
   </skin-path>
 </object>
