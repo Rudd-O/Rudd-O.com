@@ -212,29 +212,11 @@
       />
 
   <genericsetup:upgradeDepends
-      title="Multilingual attributes"
-      description="Registry: correct multilingual attribute interfaces"
-      source="*"
-      destination="1022"
-      import_steps="plone.app.registry"
-      profile="ruddocom.policy:default"
-      />
-
-  <genericsetup:upgradeDepends
-      title="Remove favicon skin"
-      description="Skins: remove skin for raw favicon because this is done in a new way in Plone 6"
+      title="Favicon and skins"
+      description="Registry: favicon, correct multilingual attribute interfaces; Skins: remove skins for raw favicon because this is done in a new way in Plone 6"
       source="*"
       destination="1023"
-      import_steps="skins"
-      profile="ruddocom.policy:default"
-      />
-
-  <genericsetup:upgradeDepends
-      title="Favicon"
-      description="Registry: favicon"
-      source="*"
-      destination="1023"
-      import_steps="plone.app.registry"
+      import_steps="plone.app.registry skins"
       profile="ruddocom.policy:default"
       />
 
