@@ -145,3 +145,11 @@ def install_searchandreplace(context=None):
         "profile-collective.searchandreplace:default"
     )
     logger("Done installing collective.searchandreplace")
+
+
+def install_scsociallike(context=None):
+    setup_tool = api.portal.get_tool("portal_setup")
+    setup_tool.runAllImportStepsFromProfile(
+        "profile-sc.social.like:default"
+    )
+    logger("Done installing sc.social.like")

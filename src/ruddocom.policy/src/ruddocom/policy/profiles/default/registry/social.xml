@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<registry>
+  <records interface="sc.social.like.interfaces.ISocialLikeSettings" prefix="sc.social.like.interfaces.ISocialLikeSettings">
+    <value key="do_not_track">True</value>
+    <value key="enabled_portal_types">
+      <element>Document</element>
+      <element>Event</element>
+      <element>News Item</element>
+      <element>Picture</element>
+    </value>
+    <value key="fbaction">like</value>
+    <value key="fbbuttons">
+      <element>Like</element>
+      <element>Share</element>
+    </value>
+    <value key="fbshowlikes">True</value>
+    <value key="plugins_enabled">
+      <element>Facebook</element>
+      <element>Twitter</element>
+      <element>Pinterest</element>
+      <element>Email</element>
+      <element>Telegram</element>
+      <element>WhatsApp</element>
+    </value>
+    <value key="typebutton">horizontal</value>
+    <value key="validation_enabled">True</value>
+  </records>
+</registry>

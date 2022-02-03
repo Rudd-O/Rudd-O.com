@@ -220,6 +220,24 @@
       profile="ruddocom.policy:default"
       />
 
+  <genericsetup:upgradeStep
+      title="Install sc.social.like"
+      description="Add-ons: install sc.social.like"
+      source="1023"
+      destination="1024"
+      handler=".setuphandlers.install_scsociallike"
+      profile="ruddocom.policy:default"
+      />
+
+  <genericsetup:upgradeDepends
+      title="Setup sc.social.like"
+      description="Registry: sc.social.like settings"
+      source="1024"
+      destination="1025"
+      import_steps="plone.app.registry viewlets"
+      profile="ruddocom.policy:default"
+      />
+
   <genericsetup:registerProfile
       name="uninstall"
       title="Rudd-O.com policy (uninstall)"

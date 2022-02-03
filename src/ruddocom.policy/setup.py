@@ -62,6 +62,7 @@ setup(
         'collective.folderishtypes[dexterity]',
         'collective.searchandreplace',
         'ruddocom.pdfiframer',
+        'sc.social.like',
     ],
     extras_require={
         'test': [
