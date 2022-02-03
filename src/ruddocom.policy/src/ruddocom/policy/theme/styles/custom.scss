@@ -258,6 +258,64 @@ figure figcaption {
   display: None;
 }
 
+/* Byline with social */
+
+body #viewlet-below-content-title {
+  margin-bottom: 1em;
+  @include media-breakpoint-down($nav-main-breakpoint) {
+    display: table;
+    width: 100%;
+  }
+}
+
+body #viewlet-below-content-title > * {
+  display: table-cell;
+  padding-left: 1.5em;
+  @include media-breakpoint-down($nav-main-breakpoint) {
+    display: table;
+    text-align: center;
+    width: 100%;
+    padding-left: 0em;
+  }
+}
+
+body #viewlet-below-content-title > *:first-child {
+  padding-left: 0em;
+}
+
+body #viewlet-below-content-title > #viewlet-social-like {
+  min-height: 0;
+  margin-top: 0;
+  line-height: 20px;
+}
+
+body #viewlet-below-content-title > #viewlet-social-like > .sociallike-network-facebook {
+  display: none;
+}
+
+body #viewlet-below-content-title > #viewlet-social-like > * {
+  float: none;
+  margin-left: 0;
+  margin-right: 0;
+  display: table-cell;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  @include media-breakpoint-down($nav-main-breakpoint) {
+    padding-left: 0em;
+    padding-right: 0em;
+  }
+}
+
+body #viewlet-below-content-title > #viewlet-social-like * {
+  vertical-align: bottom;
+  color: rgba(255, 255, 255, 0.0) !important;
+}
+
+// Undo some stupid shit from the social like plugin.
+body #viewlet-below-content-title > #viewlet-social-like .whatsapp {
+  display: inline-block;
+}
+
 /* Hide byline in collection page. */
 .portaltype-collection.template-listing_view header div#viewlet-below-content-title, {
   display: None;
