@@ -61,6 +61,12 @@ body #portal-header #portal-logo {
   }
 }
 
+// Ensure hyperlinks in the portal header are white.
+// Otherwise they appear hidden.
+body #portal-header a {
+  color: white;
+}
+
 /* Logo adjustments end */
 
 

@@ -64,6 +64,12 @@ body #portal-logo {
   margin-top: 0;
 }
 
+// Ensure hyperlinks in the portal header are white.
+// Otherwise they appear hidden.
+body #portal-header a {
+  color: white;
+}
+
 /* Search box adjustments */
 
 body #portal-searchbox [type="text"] {
